@@ -1,0 +1,48 @@
+<ion-app>
+    <ion-split-pane>
+        <ion-menu type="overlay">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title>Menu</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <ion-list *ngIf="!loggedIn">
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item routerLink="/login" routerDirection="root">
+                            <ion-icon slot="start" name="home"></ion-icon>
+                            <ion-label>
+                                Login
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+                <ion-list *ngIf="loggedIn">
+                    <ion-list-header>Menu</ion-list-header>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/favorites" routerDirection="root">
+                            <em class="fa fa-fw fa-star" slot="start"></em>
+                            <ion-label>Favoris</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/openings" routerDirection="root">
+                            <em class="fa fa-fw fa-window-maximize" slot="start"></em>
+                            <ion-label>Ouvertures</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle autoHide="false">
+                        <ion-item routerLink="/status" routerDirection="root">
+                            <em class="fa fa-fw fa-cogs" slot="start"></em>
+                            <ion-label>Status</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet main></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            <em class="fa fa-fw fa-cogs"></em> Status
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>BlyssBox</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>Firmware : {{gateway.firmware}}</ion-item>
+          <ion-item>Version : {{gateway.version}}</ion-item>
+          <ion-item>IP : {{gateway.ip}}</ion-item>
+          <ion-item>No de série : {{gateway.serial}}</ion-item>
+          <ion-item>timezone : {{gateway.timezone }}</ion-item>
+          <ion-item>activationDate : {{gateway.activationDate | date : 'mediumDate' }}</ion-item>
+          <ion-item>initDate : {{gateway.initDate | date : 'mediumDate' }}</ion-item>
+          <ion-item>updateDate : {{gateway.updateDate | date : 'mediumDate' }}</ion-item>
+          <ion-item>manufacDate : {{gateway.manufacDate | date : 'mediumDate' }}</ion-item>
+          <ion-item>muteMode : {{gateway.muteMode }}</ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+        <ion-list-header>
+            <ion-label>Status des accessoires</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of devices" [disabled]="!item.alive">
+            <em class="fa fa-fw fa-tag" slot="start"></em>
+            {{item.name}}
+
+            <div class="item-note" slot="end">
+                <ion-text [color]="getColor(item.batteryLevel)">
+                    {{item.batteryLevel}} %
+                    <em class="fa fa-fw"
+                        [ngClass]="{
+                'fa-battery-4' : item.batteryLevel > 75,
+                'fa-battery-3' : item.batteryLevel > 50 && item.batteryLevel <= 75,
+                'fa-battery-2' : item.batteryLevel > 25 && item.batteryLevel <= 50,
+                'fa-battery-1' : item.batteryLevel <= 25
+                }"></em></ion-text>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            <em class="fa fa-fw fa-window-maximize"></em> Ouvertures
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+        <ion-item *ngFor="let item of openings" [disabled]="!item.alive">
+            <em class="fa fa-fw fa-window-maximize" slot="start"></em>
+            {{item.name}}
+
+            <div class="item-note" slot="end">
+                <ion-text [color]="getColor(item.batteryLevel)">
+                    <em class="fa fa-fw"
+                        [ngClass]="{
+                'fa-battery-4' : item.batteryLevel > 75,
+                'fa-battery-3' : item.batteryLevel > 50 && item.batteryLevel <= 75,
+                'fa-battery-2' : item.batteryLevel > 25 && item.batteryLevel <= 50,
+                'fa-battery-1' : item.batteryLevel <= 25
+                }"></em></ion-text>
+            </div>
+            <div class="item-note" slot="end">
+                <ion-toggle [checked]="item.status === 'CLOSE'" *ngIf="item.status !== 'TOGGLE'"
+                            (click)="run(item.serial, item.status)"></ion-toggle>
+                <ion-button *ngIf="item.status === 'TOGGLE'"
+                            (click)="runToggle(item.serial)">
+                    <em slot="icon-only" class="fa fa-fw fa-play"></em>
+                </ion-button>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

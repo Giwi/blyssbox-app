@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HandleError, HttpErrorHandler } from './http-error-handler.service';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
@@ -102,7 +102,19 @@ export class BlyssboxService {
       endDate,
       page
     }, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('setDeviceStatus')))
+      .pipe(catchError(this.handleError<any>('getHistory')))
+      .pipe(map(response => response));
+  }
+
+  getGatewayConnection()  {
+    return this.http.get(this.uri + '2/gateway/connection;jsessionid=' + this.userService.getSession(), this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getGatewayConnection')))
+      .pipe(map(response => response));
+  }
+
+  setGatewayReboot() {
+    return this.http.put(this.uri + '2/gateway/reboot;jsessionid=' + this.userService.getSession(), {}, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getGatewayConnection')))
       .pipe(map(response => response));
   }
 }

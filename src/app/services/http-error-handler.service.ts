@@ -32,13 +32,7 @@ export type HandleError = <T> (operation?: string, result?: T) => (error: HttpEr
 /** Handles HttpClient errors */
 @Injectable()
 export class HttpErrorHandler {
-  /**
-   *
-   * @param {NGXLogger} logger
-   * @param {ToastController} toastController
-   * @param {Router} router
-   * @param {UserService} userService
-   */
+
   constructor(
     private logger: NGXLogger,
     private toastController: ToastController,
@@ -71,11 +65,10 @@ export class HttpErrorHandler {
   }
 
   async presentToast(message: string) {
-    const toast = await this.toastController.create({
+    this.toastController.create({
       message,
       duration: 2000,
       color: 'danger'
-    });
-    toast.present();
+    }).then(t => t.present());
   }
 }

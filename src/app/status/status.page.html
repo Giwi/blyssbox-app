@@ -14,25 +14,79 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-    <ion-card>
-        <ion-card-header>
-            <ion-card-title>BlyssBox</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item>Firmware : {{gateway.firmware}}</ion-item>
-          <ion-item>Version : {{gateway.version}}</ion-item>
-          <ion-item>IP : {{gateway.ip}}</ion-item>
-          <ion-item>No de série : {{gateway.serial}}</ion-item>
-          <ion-item>timezone : {{gateway.timezone }}</ion-item>
-          <ion-item>activationDate : {{gateway.activationDate | date : 'mediumDate' }}</ion-item>
-          <ion-item>initDate : {{gateway.initDate | date : 'mediumDate' }}</ion-item>
-          <ion-item>updateDate : {{gateway.updateDate | date : 'mediumDate' }}</ion-item>
-          <ion-item>manufacDate : {{gateway.manufacDate | date : 'mediumDate' }}</ion-item>
-          <ion-item>muteMode : {{gateway.muteMode }}</ion-item>
-        </ion-card-content>
-    </ion-card>
-
     <ion-list>
+        <ion-item>
+            <ion-label text-wrap>Redémarrer la BlyssBox :</ion-label>
+            <div class="item-note" slot="end">
+                <ion-button (click)="reboot()" color="danger">
+                    <em slot="icon-only" class="fa fa-fw fa-repeat"></em>
+                </ion-button>
+            </div>
+        </ion-item>
+        <ion-item> Batterie :
+            <div class="item-note" slot="end">
+                <ion-text [color]="getColor(gateway.batt)">
+                    {{gateway.batt}} %  <em class="fa fa-fw"
+                        [ngClass]="{
+                'fa-battery-4' : gateway.batt > 75,
+                'fa-battery-3' : gateway.batt > 50 && gateway.batt <= 75,
+                'fa-battery-2' : gateway.batt > 25 && gateway.batt <= 50,
+                'fa-battery-1' : gateway.batt <= 25
+                }"></em></ion-text>
+            </div>
+        </ion-item>
+        <ion-item>Alimentation :
+            <div class="item-note" slot="end">
+                <em class="fa fa-fw fa-plug" *ngIf="gateway.power === 'SECTOR'"></em>
+                <em class="fa fa-fw fa-battery" *ngIf="gateway.power === 'BATT'"></em>
+            </div>
+        </ion-item>
+        <ion-item>Connexion :
+            <div class="item-note" slot="end">
+                <em class="fa fa-fw fa-globe" *ngIf="gateway.connection === 'ETH'"></em>
+                <ion-text [color]="getColor(gateway.wifi)" *ngIf="gateway.connection === 'WIFI'">
+                    <em class="fa fa-fw fa-wifi"></em>
+                </ion-text>
+                <ion-text [color]="getColor(gateway.gsm)" *ngIf="gateway.connection === 'GSM'">
+                    <em class="fa fa-fw fa-mobile"></em>
+                </ion-text>
+            </div>
+        </ion-item>
+        <ion-list-header>
+            <ion-label>Informations techniques</ion-label>
+        </ion-list-header>
+        <ion-item>Firmware :
+            <div class="item-note" slot="end">{{gateway.firmware}}</div>
+        </ion-item>
+        <ion-item>Version :
+            <div class="item-note" slot="end">{{gateway.version}}</div>
+        </ion-item>
+        <ion-item>IP :
+            <div class="item-note" slot="end">{{gateway.ip}}</div>
+        </ion-item>
+        <ion-item>No de série :
+            <div class="item-note" slot="end">{{gateway.serial}}</div>
+        </ion-item>
+        <ion-item>timezone :
+            <div class="item-note" slot="end">{{gateway.timezone }}</div>
+        </ion-item>
+        <ion-item>activationDate :
+            <div class="item-note" slot="end">{{gateway.activationDate | date : 'mediumDate' }}</div>
+        </ion-item>
+        <ion-item>initDate :
+            <div class="item-note" slot="end">{{gateway.initDate | date : 'mediumDate' }}</div>
+        </ion-item>
+        <ion-item>updateDate :
+            <div class="item-note" slot="end">{{gateway.updateDate | date : 'mediumDate' }}</div>
+        </ion-item>
+        <ion-item>manufacDate :
+            <div class="item-note" slot="end">{{gateway.manufacDate | date : 'mediumDate' }}</div>
+        </ion-item>
+        <ion-item>muteMode :
+            <div class="item-note" slot="end">{{gateway.muteMode }}</div>
+        </ion-item>
+
+
         <ion-list-header>
             <ion-label>Status des accessoires</ion-label>
         </ion-list-header>

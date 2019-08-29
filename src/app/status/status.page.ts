@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlyssboxService } from '../services/blyssbox.service';
 import { UserService } from '../services/user.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-status',
@@ -12,7 +13,11 @@ export class StatusPage implements OnInit {
   gateway: any = {};
   devices = [];
 
-  constructor(private blyssboxService: BlyssboxService, private userService: UserService) {
+  constructor(
+    private toastController: ToastController,
+    private blyssboxService: BlyssboxService,
+    private userService: UserService
+  ) {
   }
 
   ngOnInit() {
@@ -20,12 +25,27 @@ export class StatusPage implements OnInit {
   }
 
   doRefresh(event) {
-    this.gateway = this.userService.userData.gateway;
-    this.blyssboxService.getAllDevices().subscribe(devices => {
-      this.devices = devices;
-      if (event) {
-        event.target.complete();
-      }
+    if (this.userService.userData) {
+      this.gateway = this.userService.userData.gateway;
+      this.blyssboxService.getGatewayConnection().subscribe(c => {
+        this.gateway = { ...this.gateway, ...c };
+        console.log(this.gateway);
+        this.blyssboxService.getAllDevices().subscribe(devices => {
+          this.devices = devices;
+          if (event) {
+            event.target.complete();
+          }
+        });
+      });
+    }
+  }
+
+  reboot() {
+    this.blyssboxService.setGatewayReboot().subscribe(() => {
+      this.toastController.create({
+        message: 'Votre BlyssBox redémarre',
+        duration: 2000
+      }).then(t => t.present());
     });
   }
 

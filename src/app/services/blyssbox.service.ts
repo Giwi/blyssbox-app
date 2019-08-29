@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,16 +34,14 @@ export class BlyssboxService {
     return this.http.post(this.uri + '2/auth', { login, password, ihm: 'fx' }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('login')))
       .pipe(
-        map(response => {
-          console.log(response);
+        mergeMap(response => {
           if (response) {
-            this.userService.login({
+            return this.userService.login({
               sessionId: response.sessionId,
               user: response.user,
               gateway: response.gateway,
               popups: response.popups
             });
-            return response.user;
           } else {
             return undefined;
           }
@@ -54,7 +52,7 @@ export class BlyssboxService {
   getFavorites() {
     return this.http.get(this.uri + '2/favorite;jsessionid=' + this.userService.getSession(), this.httpOptions)
       .pipe(catchError(this.handleError<any>('getFavorites')))
-      .pipe(map(response => response.favorites));
+      .pipe(map(response => response.favorites || []));
   }
 
   getDevices(category: string, subCategory: string) {
@@ -62,7 +60,7 @@ export class BlyssboxService {
       capability: ['ACTUATOR', 'IN_TEMP', 'IN_HUM']
     }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getDevices')))
-      .pipe(map(response => response.devices
+      .pipe(map(response => (response.devices || [])
         .filter(d => d.categories.filter(c => c.value === category).length > 0)
       ));
   }
@@ -72,7 +70,7 @@ export class BlyssboxService {
       capability: ['ACTUATOR', 'IN_TEMP', 'IN_HUM']
     }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getDevices')))
-      .pipe(map(response => response.devices));
+      .pipe(map(response => response.devices || []));
   }
 
   getDevice(serial: string, category: string, subCategory: string) {
@@ -93,6 +91,17 @@ export class BlyssboxService {
 
   setDeviceStatus(serial: string, status: string) {
     return this.http.put(this.uri + '2/device/status;jsessionid=' + this.userService.getSession(), { serial, status }, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('setDeviceStatus')))
+      .pipe(map(response => response));
+  }
+
+  getHistory(startDate, max, endDate, page) {
+    return this.http.post(this.uri + '2/history;jsessionid=' + this.userService.getSession(), {
+      startDate,
+      max,
+      endDate,
+      page
+    }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('setDeviceStatus')))
       .pipe(map(response => response));
   }

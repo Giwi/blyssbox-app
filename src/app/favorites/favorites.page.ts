@@ -17,8 +17,7 @@ export class FavoritesPage implements OnInit {
   }
 
   run(serial: number) {
-    console.log(serial);
-  //  this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.blyssboxService.getFavorites().subscribe(f => this.favorites = f));
+    this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.doRefresh(undefined));
   }
 
   doRefresh(event) {
@@ -41,8 +40,6 @@ export class FavoritesPage implements OnInit {
         return 'fa-window-maximize';
       default:
         return 'fa-star';
-
     }
   }
-
 }

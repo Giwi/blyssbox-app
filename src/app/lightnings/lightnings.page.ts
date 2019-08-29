@@ -3,12 +3,12 @@ import { BlyssboxService } from '../services/blyssbox.service';
 import { DevicesService } from '../services/devices.service';
 
 @Component({
-  selector: 'app-openings',
-  templateUrl: './openings.page.html',
-  styleUrls: ['./openings.page.scss'],
+  selector: 'app-lightnings',
+  templateUrl: './lightnings.page.html',
+  styleUrls: ['./lightnings.page.scss'],
 })
-export class OpeningsPage implements OnInit {
-  openings = [];
+export class LightningsPage implements OnInit {
+  lightnings = [];
 
   constructor(
     private blyssboxService: BlyssboxService,
@@ -51,9 +51,9 @@ export class OpeningsPage implements OnInit {
   }
 
   doRefresh(event) {
-    this.blyssboxService.getDevices('OPENINGS', undefined)
+    this.blyssboxService.getDevices('LIGHTING', '')
       .subscribe(f => {
-        this.openings = f;
+        this.lightnings = f;
         (f || []).forEach(fav => console.log(fav));
         if (event) {
           event.target.complete();

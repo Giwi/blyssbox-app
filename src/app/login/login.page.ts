@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { BlyssboxService } from '../services/blyssbox.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     public router: Router,
-    private blyssboxService: BlyssboxService
+    private blyssboxService: BlyssboxService,
+    private userService: UserService
   ) {
   }
 
@@ -27,8 +29,7 @@ export class LoginPage implements OnInit {
 
     if (form.valid) {
       this.blyssboxService.login(this.login.username, this.login.password).subscribe(u => {
-        console.log(u);
-        this.router.navigateByUrl('/favorites');
+        this.userService.isLoggedIn().then(() => this.router.navigateByUrl('/favorites'));
       });
     }
   }

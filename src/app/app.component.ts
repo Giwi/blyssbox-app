@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   loggedIn = false;
+  loaded = false;
 
   constructor(
     private events: Events,
@@ -57,10 +58,9 @@ export class AppComponent implements OnInit {
   }
 
   checkLoginStatus() {
-    console.log(this.userService.userData)
     return this.userService.isLoggedIn().then(loggedIn => {
-      if(loggedIn) {
-        console.log(loggedIn)
+      this.loaded = true;
+      if (loggedIn) {
         return this.updateLoggedInStatus(loggedIn);
       } else {
         return;
@@ -71,9 +71,7 @@ export class AppComponent implements OnInit {
   updateLoggedInStatus(loggedIn: boolean) {
     setTimeout(() => {
       this.loggedIn = loggedIn;
-      if(loggedIn) {
-       // this.router.navigateByUrl('/favorites');
-      } else {
+      if (!loggedIn) {
         this.router.navigateByUrl('/login');
       }
     }, 300);

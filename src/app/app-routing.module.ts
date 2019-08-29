@@ -6,7 +6,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
   { path: 'openings', loadChildren: './openings/openings.module#OpeningsPageModule' },
-  { path: 'status', loadChildren: './status/status.module#StatusPageModule' }
+  { path: 'status', loadChildren: './status/status.module#StatusPageModule' },
+  { path: 'lightnings', loadChildren: './lightnings/lightnings.module#LightningsPageModule' },
+  { path: 'history', loadChildren: './history/history.module#HistoryPageModule' }
 ];
 
 @NgModule({

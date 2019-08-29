@@ -4,7 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            <em class="fa fa-fw fa-window-maximize"></em> Ouvertures
+            <em class="fa fa-fw fa-lightbulb-o"></em> Eclairages
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -15,10 +15,11 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <ion-list>
-        <ion-item *ngFor="let item of openings" [disabled]="!item.alive">
-            <em class="fa fa-fw fa-window-maximize" slot="start"></em>
+        <ion-item *ngFor="let item of lightnings" [disabled]="!item.alive">
+            <em class="fa fa-fw fa-lightbulb-o" slot="start"></em>
             <ion-label text-wrap><p>{{item.name}}</p>
                 <small>{{getDevice(item.type).name}}</small></ion-label>
+
             <div class="item-note" slot="end">
                 <ion-text [color]="getColor(item.batteryLevel)">
                     <em class="fa fa-fw"
@@ -31,7 +32,8 @@
             </div>
             <div class="item-note" slot="end">
                 <ion-toggle [checked]="item.status === 'CLOSE' || item.status === 'ON'" *ngIf="item.status !== 'TOGGLE'"
-                            (ionChange)="run(item.serial, item.status)"></ion-toggle>
+                            (ionChange)="run(item.serial, item.status)"
+                ></ion-toggle>
                 <ion-button *ngIf="item.status === 'TOGGLE'"
                             (click)="runToggle(item.serial)">
                     <em slot="icon-only" class="fa fa-fw fa-play"></em>

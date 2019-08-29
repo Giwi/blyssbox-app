@@ -12,7 +12,7 @@ export class UserService {
     gateway: any,
     popups: any,
   };
-  HAS_LOGGED_IN = 'hasLoggedIn2';
+  USER_DATA = 'blyss';
 
 
   constructor(
@@ -22,27 +22,28 @@ export class UserService {
   }
 
   login(userData: any): Promise<any> {
-    return this.storage.set(this.HAS_LOGGED_IN, userData).then(() => {
-      this.userData = userData;
-      return this.events.publish('user:login');
+    this.userData = userData;
+    return this.storage.set(this.USER_DATA, userData).then(() => {
+      this.events.publish('user:login');
+      return this.userData;
     });
   }
 
   logout(): Promise<any> {
-    return this.storage.remove(this.HAS_LOGGED_IN)
-      .then(() => this.events.publish('user:logout'));
+    return this.storage.remove(this.USER_DATA)
+      .then(() => {
+        this.events.publish('user:logout');
+      });
   }
 
   isLoggedIn(): Promise<any> {
-    return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
+    return this.storage.get(this.USER_DATA).then((value) => {
       this.userData = value;
-      console.log(this.userData);
       return this.userData;
     });
   }
 
   getSession() {
-    console.log(this.userData);
     return (this.userData || { sessionId: '' }).sessionId;
   }
 }

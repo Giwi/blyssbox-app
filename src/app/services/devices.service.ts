@@ -1,0 +1,1212 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DevicesService {
+
+  private devices = {
+    P0SW: {
+      name: 'Télécommande multifonction murale',
+      long_name: 'TÉLÉCOMMANDE MURALE (Éclairage/Volets/VMC)',
+      mini_name: 'Téléc multi murale',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582864',
+      pairingMode: 'BON',
+      pairingCategory: ['favorites'],
+      positions: {ON: 'Position ON/Haut', OFF: 'Position OFF/Bas'}
+    },
+    P0SWK: {
+      name: 'Télécommande multifonction murale Kalya',
+      long_name: 'TÉLÉCOMMANDE MURALE KALYA (Éclairage/Volets/VMC)',
+      mini_name: 'Téléc murale Kalya',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '637141',
+      pairingMode: 'PPH',
+      pairingCategory: ['favorites'],
+      positions: {ON: 'Position ON/Haut', OFF: 'Position OFF/Bas'}
+    },
+    P0SWDK: {
+      name: 'Télécommande multifonction murale double Kalya',
+      long_name: 'TÉLÉCOMMANDE MURALE DOUBLE KALYA (Éclairage/Volets/VMC)',
+      mini_name: 'Téléc murale double',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '637144',
+      pairingMode: 'PPH',
+      pairingCategory: ['favorites'],
+      positions: {1: 'Position ON/1', 2: 'Position OFF/2', 3: 'Position ON/3', 4: 'Position OFF/4'}
+    },
+    P0RR3: {
+      name: 'Télécommande multifonction 2011',
+      long_name: 'TÉLÉCOMMANDE PRISES COMMANDÉES (3 boutons)',
+      mini_name: 'Téléc multi 2011',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582886',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Touche 1/ON',
+        2: 'Touche 1/OFF',
+        3: 'Touche 2/ON',
+        4: 'Touche 2/OFF',
+        5: 'Touche 3/ON',
+        6: 'Touche 3/OFF'
+      }
+    },
+    P0RR5: {
+      name: 'Télécommande multifonction 2012',
+      long_name: 'TÉLÉCOMMANDE PRISES COMMANDÉES (5 boutons)',
+      mini_name: 'Téléc multi 2012',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582886',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Touche 1',
+        2: 'Touche 2',
+        3: 'Touche 3',
+        4: 'Touche 4',
+        5: 'Touche 5',
+        6: 'Touche 6',
+        7: 'Touche 7',
+        8: 'Touche 8',
+        9: 'Touche 9',
+        10: 'Touche 10'
+      }
+    },
+    P0RR4: {
+      name: 'Télécommande multifonction 2013',
+      long_name: 'TÉLÉCOMMANDE KALYA PRISES COMMANDÉES (3 boutons)',
+      mini_name: 'Téléc multi 2013',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582886',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Touche 1/ON',
+        2: 'Touche 1/OFF',
+        3: 'Touche 2/ON',
+        4: 'Touche 2/OFF',
+        5: 'Touche 3/ON',
+        6: 'Touche 3/OFF'
+      }
+    },
+    P0RLR4: {
+      name: 'Télécommande multifonction LCD 2011',
+      long_name: 'TÉLÉCOMMANDE LCD',
+      mini_name: 'Téléc multi LCD 2011',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582883',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Touche 1/ON',
+        2: 'Touche 1/OFF',
+        3: 'Touche 2/ON',
+        4: 'Touche 2/OFF',
+        5: 'Touche 3/ON',
+        6: 'Touche 3/OFF',
+        7: 'Touche 4/ON',
+        8: 'Touche 4/OFF'
+      }
+    },
+    P0RLR8: {
+      name: 'Télécommande multifonction LCD 2012',
+      long_name: 'TÉLÉCOMMANDE LCD (4 ou 8 canaux)',
+      mini_name: 'Téléc multi LCD 2012',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582883',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Canal 1',
+        2: 'Canal 2',
+        3: 'Canal 3',
+        4: 'Canal 4',
+        5: 'Canal 5',
+        6: 'Canal 6',
+        7: 'Canal 7',
+        8: 'Canal 8',
+        9: 'Canal 9',
+        10: 'Canal 10',
+        11: 'Canal 11',
+        12: 'Canal 12',
+        13: 'Canal 13',
+        14: 'Canal 14',
+        15: 'Canal 15',
+        16: 'Canal 16'
+      }
+    },
+    P0RLR16: {
+      name: 'Télécommande multifonction LCD 2013',
+      long_name: 'TÉLÉCOMMANDE LCD (4 ou 8 canaux)',
+      mini_name: 'Téléc multi LCD 2013',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '582883',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Touche 1/ON',
+        2: 'Touche 1/OFF',
+        3: 'Touche 2/ON',
+        4: 'Touche 2/OFF',
+        5: 'Touche 3/ON',
+        6: 'Touche 3/OFF',
+        7: 'Touche 4/ON',
+        8: 'Touche 4/OFF',
+        9: 'Touche 5/ON',
+        10: 'Touche 5/OFF',
+        11: 'Touche 6/ON',
+        12: 'Touche 6/OFF',
+        13: 'Touche 7/ON',
+        14: 'Touche 7/OFF',
+        15: 'Touche 8/ON',
+        16: 'Touche 8/OFF',
+        17: 'Touche 9/ON',
+        18: 'Touche 9/OFF',
+        19: 'Touche 10/ON',
+        20: 'Touche 10/OFF',
+        21: 'Touche 11/ON',
+        22: 'Touche 11/OFF',
+        23: 'Touche 12/ON',
+        24: 'Touche 12/OFF',
+        25: 'Touche 13/ON',
+        26: 'Touche 13/OFF',
+        27: 'Touche 14/ON',
+        28: 'Touche 14/OFF',
+        29: 'Touche 15/ON',
+        30: 'Touche 15/OFF',
+        31: 'Touche 16/ON',
+        32: 'Touche 16/OFF'
+      }
+    },
+    P0RRF: {
+      name: 'Télécommande confort multifonction',
+      long_name: 'TÉLÉCOMMANDE CONFORT',
+      mini_name: 'Téléc confort multi',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'remote',
+      ref: '664296',
+      pairingMode: 'C',
+      pairingCategory: ['favorites'],
+      positions: {
+        1: 'Touche 1/ON',
+        2: 'Touche 1/OFF',
+        3: 'Touche 2/ON',
+        4: 'Touche 2/OFF',
+        5: 'Touche 3/ON',
+        6: 'Touche 3/OFF'
+      }
+    },
+    P1DMP: {
+      name: 'Détecteur de mouvement intérieur',
+      mini_name: 'Détect mouv int',
+      mode: 'EMITTER',
+      alert: 'onMouvement',
+      category: 'security',
+      ref: '599012',
+      pairingMode: 'P',
+      pairingCategory: ['security']
+    },
+    P1DMO: {
+      name: 'Détecteur de mouvement extérieur',
+      mini_name: 'Détect mouv ext',
+      mode: 'EMITTER',
+      alert: 'onMouvement',
+      category: 'security',
+      ref: '599023',
+      pairingMode: 'P',
+      pairingCategory: ['security']
+    },
+    P1DO: {
+      name: 'Détecteur d\'ouverture',
+      mini_name: 'Détect ouverture',
+      mode: 'EMITTER',
+      alert: 'onOpening',
+      category: 'security',
+      ref: '599034',
+      pairingMode: 'P',
+      pairingCategory: ['security']
+    },
+    P1G: {
+      name: 'Détecteur de bris de vitre',
+      mini_name: 'Détect bris vitre',
+      mode: 'EMITTER',
+      alert: 'onGlass',
+      category: 'security',
+      ref: '599051',
+      pairingMode: 'P',
+      pairingCategory: ['security']
+    },
+    P1DOG: {
+      name: 'Détecteur porte de garage',
+      mini_name: 'Détect porte garage',
+      mode: 'EMITTER',
+      alert: 'onOpening',
+      category: 'security',
+      ref: '599052',
+      pairingMode: 'PP3S',
+      pairingCategory: ['security']
+    },
+    P1DOF: {
+      name: 'Détecteur volet roulant',
+      mini_name: 'Détect volet roulant',
+      mode: 'EMITTER',
+      alert: 'onOpening',
+      category: 'security',
+      ref: '599053',
+      pairingMode: 'PP3S',
+      pairingCategory: ['security']
+    },
+    P1RS: {
+      name: 'Télécommande pour alarme',
+      mini_name: 'Télécommande alarme',
+      mode: 'EMITTER',
+      alert: 'onSos',
+      category: 'security',
+      ref: '599045',
+      pairingMode: 'P1RS',
+      pairingCategory: ['security']
+    },
+    P1KR: {
+      name: 'Clavier lecteur de badge pour alarme',
+      long_name: 'CLAVIER À CODES DE SÉCURITÉ',
+      mini_name: 'Clavier alarme',
+      mode: 'EMITTER',
+      alert: 'onSos',
+      category: 'security',
+      ref: '599056',
+      pairingMode: 'P1KR',
+      pairingCategory: ['security'],
+      positions: {
+        1: 'Scénario 1',
+        2: 'Scénario 2',
+        3: 'Scénario 3',
+        4: 'Scénario 4',
+        5: 'Scénario 5',
+        6: 'Scénario 6',
+        7: 'Scénario 7',
+        8: 'Scénario 8',
+        9: 'Scénario 9',
+        10: 'Scénario 10',
+        11: 'Scénario 11',
+        12: 'Scénario 12',
+        13: 'Scénario 13',
+        14: 'Scénario 14',
+        15: 'Scénario 15',
+        16: 'Scénario 16',
+        17: 'Scénario 17',
+        18: 'Scénario 18',
+        19: 'Scénario 19',
+        20: 'Scénario 20',
+        A: 'Scénario A',
+        B: 'Scénario B',
+        C: 'Scénario C',
+        D: 'Scénario D'
+      }
+    },
+    P1TR: {
+      name: 'Badge ou code utilisateur pour alarme',
+      long_name: 'BADGE OU CODE UTILISATEUR POUR ALARME',
+      mini_name: 'Badge ou code alarme',
+      mode: 'EMITTER',
+      alert: 'onSos',
+      category: 'security',
+      ref: '599061',
+      pairingMode: 'P1TR',
+      pairingCategory: ['security'],
+      positions: {
+        1: 'Scénario 1',
+        2: 'Scénario 2',
+        3: 'Scénario 3',
+        4: 'Scénario 4',
+        5: 'Scénario 5',
+        6: 'Scénario 6',
+        7: 'Scénario 7',
+        8: 'Scénario 8',
+        9: 'Scénario 9',
+        10: 'Scénario 10',
+        11: 'Scénario 11',
+        12: 'Scénario 12',
+        13: 'Scénario 13',
+        14: 'Scénario 14',
+        15: 'Scénario 15',
+        16: 'Scénario 16',
+        17: 'Scénario 17',
+        18: 'Scénario 18',
+        19: 'Scénario 19',
+        20: 'Scénario 20',
+        A: 'Scénario A',
+        B: 'Scénario B',
+        C: 'Scénario C',
+        D: 'Scénario D'
+      }
+    },
+    P1SI: {
+      name: 'Sirène intérieure',
+      mini_name: 'Sirène intérieure',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      ref: '630466',
+      pairingMode: 'B5S',
+      pairingCategory: ['security']
+    },
+    P1SO: {
+      name: 'Sirène extérieure flash',
+      mini_name: 'Sirène ext flash',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      ref: '599062',
+      pairingMode: 'B5S',
+      pairingCategory: ['security']
+    },
+    P1SO2: {
+      name: 'Sirène extérieure flash 2014',
+      mini_name: 'Sirène ext flash',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      ref: '599062',
+      pairingMode: 'B5S',
+      pairingCategory: ['security']
+    },
+    P1P: {
+      name: 'Bracelet médaillon d\'urgence',
+      mini_name: 'Bracelet urgence',
+      mode: 'EMITTER',
+      alert: 'onSos',
+      category: 'security',
+      ref: '599063',
+      pairingMode: 'B5S',
+      pairingCategory: ['security']
+    },
+    USBW: {
+      name: 'Montre téléphone d\'urgence',
+      mini_name: 'Montre urgence',
+      mode: null,
+      alert: null,
+      category: 'security',
+      ref: null,
+      pairingMode: 'USB',
+      pairingCategory: ['security']
+    },
+    FCAM: {
+      name: 'Caméra IP WIFI intérieure',
+      mini_name: 'Caméra IP WIFI int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'cameras',
+      ref: '599003',
+      pairingMode: 'A',
+      pairingCategory: ['cameras']
+    },
+    RCAM: {
+      name: 'Caméra IP WIFI rotative intérieure',
+      mini_name: 'Caméra IP WIFI rot',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'cameras',
+      ref: '599004',
+      pairingMode: 'A',
+      pairingCategory: ['cameras']
+    },
+    OCAM: {
+      name: 'Caméra IP WIFI extérieure',
+      mini_name: 'Caméra IP WIFI ext',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'cameras',
+      ref: '599005',
+      pairingMode: 'A',
+      pairingCategory: ['cameras']
+    },
+    DCAM: {
+      name: 'Caméra IP WIFI rotative extérieure',
+      mini_name: 'Caméra ext rot',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'cameras',
+      ref: '642149',
+      pairingMode: 'A',
+      pairingCategory: ['cameras']
+    },
+    FCAMHD2: {
+      name: 'Caméra IP WIFI intérieure HD',
+      mini_name: 'Caméra IP WIFI int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'cameras',
+      ref: '699520',
+      pairingMode: 'A',
+      pairingCategory: ['cameras']
+    },
+    IIP: {
+      name: 'Interphone Vidéo blanc',
+      mini_name: 'Interphone vidéo',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      pairingMode: 'IIP',
+      pairingCategory: ['cameras']
+    },
+    IIP_B: {
+      name: 'Interphone Vidéo noir',
+      mini_name: 'Interphone vidéo',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      pairingMode: 'IIP',
+      pairingCategory: ['cameras']
+    },
+    IIP_S: {
+      name: 'Interphone Vidéo métal',
+      mini_name: 'Interphone vidéo',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      pairingMode: 'IIP',
+      pairingCategory: ['cameras']
+    },
+    IIPM: {
+      name: 'Module IP interphone',
+      mini_name: 'Module IP interphone',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'security',
+      pairingMode: 'IIPM',
+      pairingCategory: ['cameras']
+    },
+    P1S: {
+      name: 'Détecteur de fumée',
+      mini_name: 'Détecteur de fumée',
+      mode: 'EMITTER',
+      alert: 'onSmoke',
+      category: 'domestic',
+      ref: '599007',
+      pairingMode: 'PP',
+      pairingCategory: ['security']
+    },
+    P1C: {
+      name: 'Détecteur de monoxyde de carbone',
+      mini_name: 'Détect CO2',
+      mode: 'EMITTER',
+      alert: 'onCo',
+      category: 'domestic',
+      ref: '599054',
+      pairingMode: 'PP',
+      pairingCategory: ['security']
+    },
+    P1GZ: {
+      name: 'Détecteur de gaz',
+      mini_name: 'Détecteur de gaz',
+      mode: 'EMITTER',
+      alert: 'onGas',
+      category: 'domestic',
+      ref: '599055',
+      pairingMode: 'PP',
+      pairingCategory: ['security']
+    },
+    P1W: {
+      name: 'Détecteur d\'inondation',
+      mini_name: 'Détecteur inondation',
+      mode: 'EMITTER',
+      alert: 'onWater',
+      category: 'domestic',
+      ref: '599057',
+      pairingMode: 'PP3S',
+      pairingCategory: ['security']
+    },
+    P1F: {
+      name: 'Détecteur de gel',
+      mini_name: 'Détecteur de gel',
+      mode: 'EMITTER',
+      alert: 'onFreeze',
+      category: 'domestic',
+      ref: '599058',
+      pairingMode: 'PP3S',
+      pairingCategory: ['security']
+    },
+    P1FF: {
+      name: 'Détecteur de panne congélateur',
+      mini_name: 'Détect panne congél',
+      mode: 'EMITTER',
+      alert: 'onFreezerFailure',
+      category: 'domestic',
+      ref: '599059',
+      pairingMode: 'PP3S',
+      pairingCategory: ['security']
+    },
+    P1EF: {
+      name: 'Détecteur de panne d\'électricité',
+      mini_name: 'Détect panne élec',
+      mode: 'EMITTER',
+      alert: 'onElec',
+      category: 'domestic',
+      ref: '599060',
+      pairingMode: 'B',
+      pairingCategory: ['security']
+    },
+    P0R: {
+      name: 'Prise télécommandée pour éclairage intérieur',
+      mini_name: 'Prise éclairage int',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582874',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0RM: {
+      name: 'Mini prise télécommandée pour éclairage intérieure',
+      mini_name: 'Mini prise commandée',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '664290',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0RD: {
+      name: 'Prise télécommandée variateur pour éclairage intérieur',
+      mini_name: 'Prise variateur int',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582882',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0RO: {
+      name: 'Prise télécommandée pour éclairage extérieur',
+      mini_name: 'Prise éclairage ext',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582875',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0RS: {
+      name: 'Douille télécommandée pour éclairage intérieur',
+      mini_name: 'Douille éclairage',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582863',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0MLT: {
+      name: 'Micro module émetteur pour éclairage intérieur',
+      long_name: 'ÉMETTEUR POUR ÉCLAIRAGE INTÉRIEUR',
+      mini_name: 'Emetteur écl int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '599031',
+      pairingMode: 'B',
+      pairingCategory: ['lighting'],
+      positions: {ON: 'Position ON/1', OFF: 'Position OFF/2'}
+    },
+    P0MLR: {
+      name: 'Micro module récepteur pour éclairage intérieur',
+      mini_name: 'Récepteur écl int',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582866',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0MLRDPK: {
+      name: 'Module récepteur pour double prise Kalya',
+      mini_name: 'Récept prise double',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '637139',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0MLRW: {
+      name: 'Micro module récepteur pour éclairage extérieur',
+      mini_name: 'Récepteur écl ext',
+      mode: 'RECEIVER',
+      category: 'lighting',
+      ref: '582856',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0SC: {
+      name: 'Interrupteur télécommandé pour éclairage intérieur',
+      mini_name: 'Inter éclairage int',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582865',
+      pairingMode: 'B3SC',
+      pairingCategory: ['lighting']
+    },
+    P0RG: {
+      name: 'Piquet de jardin télécommandé',
+      mini_name: 'Piquet de jardin',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '582870',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0IO: {
+      name: 'Détecteur de mouvement pour éclairage extérieur',
+      mini_name: 'Détect mouv ecl ext',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '582861',
+      pairingMode: 'PW',
+      pairingCategory: ['lighting']
+    },
+    P0II: {
+      name: 'Détecteur de mouvement pour éclairage intérieur',
+      mini_name: 'Détect mouv écl int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '582862',
+      pairingMode: 'PW',
+      pairingCategory: ['lighting']
+    },
+    P0IIK: {
+      name: 'Détecteur de mouvement pour éclairage intérieur Kalya',
+      mini_name: 'Détect mouv écl int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '637143',
+      pairingMode: 'PW',
+      pairingCategory: ['lighting']
+    },
+    P0TS: {
+      name: 'Capteur crépusculaire pour éclairage extérieur',
+      mini_name: 'Capteur crépusculaire',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '599047',
+      pairingMode: 'PPW',
+      pairingCategory: ['lighting']
+    },
+    P0SCN: {
+      name: 'Interrupteur télécommandé sans neutre',
+      mini_name: 'Inter éclairage int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '630450',
+      pairingMode: 'BC',
+      pairingCategory: ['lighting']
+    },
+    P0SCNK: {
+      name: 'Interrupteur télécommandé sans neutre Kalya',
+      mini_name: 'Inter éclairage int',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '637140',
+      pairingMode: 'BLC',
+      pairingCategory: ['lighting']
+    },
+    P0MRT: {
+      name: 'Micro module récepteur pour télérupteur',
+      mini_name: 'Récept télérupteur',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'lighting',
+      ref: '630457',
+      pairingMode: 'BC',
+      pairingCategory: ['lighting']
+    },
+    P2MLR: {
+      name: 'Micro module éclairage bidirectionnel avec phase',
+      mini_name: 'Mod éclair Ph BI',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '664294',
+      pairingMode: 'B',
+      pairingCategory: ['lighting']
+    },
+    P2MLR2: {
+      name: 'Micro module éclairage bidirectionnel avec phase + neutre',
+      mini_name: 'Mod éclair Ph+N BI',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'lighting',
+      ref: '664293',
+      pairingMode: 'B',
+      pairingCategory: ['lighting']
+    },
+    P0MF6: {
+      name: 'Motorisation 6Nm pour volets roulants et stores',
+      mini_name: 'Motorisation 6Nm',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '599011',
+      pairingMode: 'P0MF',
+      pairingCategory: ['opening']
+    },
+    P0MF20: {
+      name: 'Motorisation 20Nm pour volets roulants et stores',
+      mini_name: 'Motorisation 20Nm',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '599013',
+      pairingMode: 'P0MF',
+      pairingCategory: ['opening']
+    },
+    P0MF30: {
+      name: 'Motorisation 30Nm pour volets roulants et stores',
+      mini_name: 'Motorisation 30Nm',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '599014',
+      pairingMode: 'P0MF',
+      pairingCategory: ['opening']
+    },
+    P0MLS: {
+      name: 'Motorisation pour volets à battants',
+      mini_name: 'Motor volet battant',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '651332',
+      pairingMode: 'P0MF',
+      pairingCategory: ['opening']
+    },
+    P0MKV: {
+      name: 'Motorisation à vérins pour portail à battants',
+      mini_name: 'Motorisation vérins',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582852',
+      pairingMode: 'P0MKV',
+      pairingCategory: ['opening']
+    },
+    P0MKV2: {
+      name: 'Motorisation à vérins pour portail à battants 2013',
+      mini_name: 'Motorisation vérins',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582852',
+      pairingMode: 'P0MKV2',
+      pairingCategory: ['opening']
+    },
+    P0MKV3: {
+      name: 'Kit de motorisation portail à pistons',
+      mini_name: 'Kit de motorisation portail à pistons',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '695044',
+      pairingMode: 'P0MKV2',
+      pairingCategory: ['opening']
+    },
+    P0MKA: {
+      name: 'Motorisation à bras pour portail à battants',
+      mini_name: 'Motorisation bras',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582847',
+      pairingMode: 'P0MKV',
+      pairingCategory: ['opening']
+    },
+    P0MKA2: {
+      name: 'Motorisation à bras pour portail à battants 2013',
+      mini_name: 'Motorisation bras',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582847',
+      pairingMode: 'P0MKV2',
+      pairingCategory: ['opening']
+    },
+    P0MKS: {
+      name: 'Motorisation pour portail coulissant',
+      mini_name: 'Motorisation couli',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582848',
+      pairingMode: 'M',
+      pairingCategory: ['opening']
+    },
+    P0MKG: {
+      name: 'Motorisation pour porte de garage',
+      mini_name: 'Motorisation garage',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582849',
+      pairingMode: 'P0MKG',
+      pairingCategory: ['opening']
+    },
+    P0MKG2: {
+      name: 'Motorisation pour porte de garage',
+      mini_name: 'Motorisation garage',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582849',
+      pairingMode: 'P0MKG2',
+      pairingCategory: ['opening']
+    },
+    P0K: {
+      name: 'Clavier à codes pour motorisation',
+      long_name: 'CLAVIER À CODES D\'AUTOMATISME',
+      mini_name: 'Clavier motorisation',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'opening',
+      ref: '582853',
+      pairingMode: 'P0K',
+      pairingCategory: ['opening'],
+      positions: {
+        1: 'Touche 1',
+        2: 'Touche 2',
+        3: 'Touche 3',
+        4: 'Touche 4',
+        5: 'Touche 5',
+        6: 'Touche 6',
+        7: 'Touche 7',
+        8: 'Touche 8',
+        9: 'Touche 9'
+      }
+    },
+    P0R4: {
+      name: 'Télécommande pour motorisation',
+      long_name: 'TÉLÉCOMMANDE 4 TOUCHES',
+      mini_name: 'Téléc motorisation',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'opening',
+      ref: '582858',
+      pairingMode: 'C',
+      pairingCategory: ['opening'],
+      positions: {1: 'Touche 1', 2: 'Touche 2', 3: 'Touche 3', 4: 'Touche 4'}
+    },
+    P0MR: {
+      name: 'Récepteur universel pour motorisation',
+      mini_name: 'Récepteur universel',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '582857',
+      pairingMode: 'P0MR',
+      pairingCategory: ['opening']
+    },
+    P0MFM: {
+      name: 'Micro module récepteur pour volet',
+      mini_name: 'Récepteur volet',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '599008',
+      pairingMode: 'BLC',
+      pairingCategory: ['opening']
+    },
+    P0SF: {
+      name: 'Interrupteur télécommandé pour volet',
+      mini_name: 'Inter téléc volet',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '599009',
+      pairingMode: 'BLC',
+      pairingCategory: ['opening']
+    },
+    P0SFK: {
+      name: 'Interrupteur télécommandé pour volet Kalya',
+      mini_name: 'Inter téléc volet',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '637142',
+      pairingMode: 'BLC',
+      pairingCategory: ['opening']
+    },
+    P2MFM: {
+      name: 'Micro module commande volet bidirectionnel',
+      mini_name: 'Mod volet BI',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'opening',
+      ref: '664295',
+      pairingMode: 'B',
+      pairingCategory: ['opening']
+    },
+    P0VM: {
+      name: 'Micro module récepteur pour VMC',
+      mini_name: 'Récepteur VMC',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'climatic',
+      ref: '599024',
+      pairingMode: 'BLC',
+      pairingCategory: ['climatic']
+    },
+    P1RR: {
+      name: 'Prise télécommandée pour chauffage',
+      mini_name: 'Prise téléc chauffage',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    P1RPM: {
+      name: 'Capteur d\'énergie',
+      mini_name: 'Capteur énergie',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'energy',
+      ref: '599018',
+      pairingMode: 'BW',
+      pairingCategory: ['climatic', 'energy']
+    },
+    P1MHR: {
+      name: 'Récepteur chauffage électrique on/off',
+      mini_name: 'Récepteur élec onoff',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: '599020',
+      pairingMode: 'BW',
+      pairingCategory: ['climatic']
+    },
+    P1MHWR: {
+      name: 'Récepteur chauffage électrique fil pilote',
+      mini_name: 'Récepteur élec pilot',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: '599019',
+      pairingMode: 'BW',
+      pairingCategory: ['climatic']
+    },
+    P1MCH: {
+      name: 'Récepteur chaudière',
+      mini_name: 'Récepteur chaudière',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: '599021',
+      pairingMode: 'BW',
+      pairingCategory: ['climatic']
+    },
+    P1MFC: {
+      name: 'Récepteur cumulus',
+      mini_name: 'Récepteur cumulus',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: '599022',
+      pairingMode: 'B',
+      pairingCategory: ['climatic']
+    },
+    P1TV: {
+      name: 'Robinet thermostatique programmable',
+      mini_name: 'Robinet thermo prog',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: '599029',
+      pairingMode: 'P1TV',
+      pairingCategory: ['climatic']
+    },
+    P1WT: {
+      name: 'Thermostat programmable',
+      mini_name: 'Thermostat prog',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'climatic',
+      ref: '599017',
+      pairingMode: 'P1WT',
+      pairingCategory: ['climatic']
+    },
+    P1CA: {
+      name: 'Capteur pince de consommation d\'électricité',
+      mini_name: 'Pince électricité',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'energy',
+      ref: '599038',
+      pairingMode: 'PP3S',
+      pairingCategory: ['energy']
+    },
+    WUSB: {
+      name: 'Récepteur USB pour capteurs de consommation impulsionnel',
+      mini_name: 'Récepteur USB',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'energy',
+      ref: '599036',
+      pairingMode: 'USB',
+      pairingCategory: ['energy']
+    },
+    WE: {
+      name: 'Capteur impulsionnel de consommation d\'électricité',
+      mini_name: 'Capteur électricité',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'energy',
+      ref: '599039',
+      pairingMode: 'S',
+      pairingCategory: ['energy']
+    },
+    WW: {
+      name: 'Compteur d\'eau avec capteur impulsionnel',
+      mini_name: 'Compteur eau',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'energy',
+      ref: '599037',
+      pairingMode: 'S',
+      pairingCategory: ['energy']
+    },
+    P1RN: {
+      name: ' Capteur de pluie',
+      mini_name: ' Capteur de pluie',
+      mode: 'EMITTER',
+      alert: null,
+      category: 'weather',
+      ref: '599046',
+      pairingMode: 'C',
+      pairingCategory: ['weather']
+    },
+    USBWS: {
+      name: 'Station météo',
+      mini_name: 'Station météo',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'weather',
+      ref: '599041',
+      pairingMode: 'USB',
+      pairingCategory: ['weather']
+    },
+    P0SHT: {
+      name: 'Sonde d\'humidité et de température',
+      mini_name: 'Thermo-Hygromètre',
+      mode: 'RECEIVER',
+      alert: null,
+      category: 'weather',
+      ref: '630467',
+      pairingMode: 'PP',
+      pairingCategory: ['climatic']
+    },
+    P0P1R: {
+      name: 'Répéteur',
+      mini_name: 'Répéteur',
+      mode: 'BOTH',
+      alert: null,
+      category: 'miscellaneous',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    B: {
+      name: 'Blyssbox',
+      mini_name: 'Blyssbox',
+      mode: 'BOTH',
+      alert: null,
+      category: 'gateway',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    HORN: {
+      name: 'Sirène intégrée',
+      mini_name: 'Sirène intégrée',
+      mode: null,
+      serial: '13123371',
+      category: 'others',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    WARN_SIGNAL: {
+      name: 'Message de dissuasion',
+      mini_name: 'Message diss',
+      mode: null,
+      serial: 'L#WS0',
+      category: 'others',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    CAMERA: {
+      name: 'Caméra externe',
+      serial: '14155857',
+      mode: 'RECEIVER',
+      mini_name: 'Caméra externe',
+      category: 'others',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    PLAY: {
+      name: 'Touche play',
+      mini_name: 'Touche play de l\'interface',
+      mode: 'EMITTER',
+      serial: 'PLAY0',
+      alert: null,
+      category: 'others',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    },
+    UNKNOW: {
+      name: 'Type non reconnu',
+      mini_name: 'Type non reconnu',
+      mode: null,
+      category: 'default',
+      ref: null,
+      pairingMode: null,
+      pairingCategory: null
+    }
+  };
+  constructor() { }
+
+
+  getDevice(type: string) {
+    return this.devices[type];
+  }
+}

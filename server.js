@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const axios = require('axios').default;
-
+const {exec} = require('child_process');
 
 const headers = {
     'If-Modified-Since': 'Mon, 27 Mar 1972 00:00:00 GMT',
@@ -30,4 +30,15 @@ app.post(/^\/(ui)\/.+$/, (req, res) => {
         .then(response => res.json(response.data))
         .catch(error => res.json({status: error}));
 });
-app.listen(8001);
+app.listen(8001, () => {
+    exec('/usr/bin/chromium-browser --full-screen --noerrdialogs --disable-infobars --kiosk http://localhost:8001', (err, stdout, stderr) => {
+        if (err) {
+            // node couldn't execute the command
+            return;
+        }
+
+        // the *entire* stdout and stderr (buffered)
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+    });
+});

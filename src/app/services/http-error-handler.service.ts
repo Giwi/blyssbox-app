@@ -21,7 +21,6 @@ import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { NGXLogger } from 'ngx-logger';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { UserService } from './user.service';
 
 
@@ -36,7 +35,6 @@ export class HttpErrorHandler {
   constructor(
     private logger: NGXLogger,
     private toastController: ToastController,
-    private router: Router,
     private userService: UserService) {
   }
 

@@ -38,8 +38,12 @@ export class UserService {
 
   isLoggedIn(): Promise<any> {
     return this.storage.get(this.USER_DATA).then((value) => {
-      this.userData = value;
-      return this.userData;
+      if (!!value.sessionId) {
+        this.userData = value;
+        return this.userData;
+      } else {
+        return false;
+      }
     });
   }
 

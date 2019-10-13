@@ -12,14 +12,6 @@ const headers = {
     Accept: 'application/json; charset=utf-8'
 };
 
-axios.interceptors.request.use(request => {
-    return request
-});
-
-axios.interceptors.response.use(response => {
-    console.log('Response:', response);
-    return response
-});
 const app = express()
     .use(morgan('combined'))
     .use(express.static(__dirname + '/www'))

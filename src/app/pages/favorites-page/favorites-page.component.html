@@ -1,0 +1,12 @@
+<app-refresh-title (onRefresh)="doRefresh()" #refresher>
+    <em class="fa fa-fw fa-star"></em> Favoris
+</app-refresh-title>
+<div class="card-columns">
+    <div class="card text-light" *ngFor="let f of favorites"
+         [ngClass]="{ 'bg-success' : f.status === '1',  'bg-primary': f.status !== '1'}">
+        <div class="card-body">
+            <h5 class="card-title">{{f.name}}</h5>
+            <em class="fa fa-fw {{getIcon(f.actions[0].subCategory)}}"></em>
+        </div>
+    </div>
+</div>

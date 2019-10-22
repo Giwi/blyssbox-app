@@ -20,8 +20,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { NGXLogger } from 'ngx-logger';
-import { ToastController } from '@ionic/angular';
 import { UserService } from './user.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 /** Type of the handleError function returned by HttpErrorHandler.createHandleError */
@@ -34,7 +34,7 @@ export class HttpErrorHandler {
 
   constructor(
     private logger: NGXLogger,
-    private toastController: ToastController,
+    private toastrService: ToastrService,
     private userService: UserService) {
   }
 
@@ -63,10 +63,6 @@ export class HttpErrorHandler {
   }
 
   async presentToast(message: string) {
-    this.toastController.create({
-      message,
-      duration: 2000,
-      color: 'danger'
-    }).then(t => t.present());
+    this.toastrService.error(message);
   }
 }

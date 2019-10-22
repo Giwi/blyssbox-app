@@ -1,41 +1,53 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-import { IonicStorageModule } from '@ionic/storage';
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
+import { HistoryPageComponent } from './pages/history-page/history-page.component';
+import { LightningsPageComponent } from './pages/lightnings-page/lightnings-page.component';
+import { OpeningsPageComponent } from './pages/openings-page/openings-page.component';
+import { StatusPageComponent } from './pages/status-page/status-page.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-
+import { StorageModule } from '@ngx-pwa/local-storage';
+import  { MessageBusModule } from 'ngx-message-bus';
+import { RefreshTitleComponent } from './components/refresh-title/refresh-title.component';
+import { BatteryLevelComponent } from './components/battery-level/battery-level.component';
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+    FavoritesPageComponent,
+    HistoryPageComponent,
+    LightningsPageComponent,
+    OpeningsPageComponent,
+    StatusPageComponent,
+    RefreshTitleComponent,
+    BatteryLevelComponent
+  ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    LoggerModule.forRoot({ serverLoggingUrl: '', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF }),
-    IonicStorageModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
+    ToastrModule.forRoot({
+      preventDuplicates: true
     }),
-    AppRoutingModule
+    NgbModule,
+    LoggerModule.forRoot({serverLoggingUrl: '', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
+    StorageModule.forRoot({IDBNoWrap: true, IDBDBName: 'blyssbox', LSPrefix: 'blyssbox_'}),
+    MessageBusModule
   ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    HttpErrorHandler,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
+  providers: [HttpErrorHandler],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

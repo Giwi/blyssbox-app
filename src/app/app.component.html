@@ -1,62 +1,38 @@
-<ion-app>
-    <ion-split-pane>
-        <ion-menu type="overlay">
-            <ion-header>
-                <ion-toolbar>
-                    <ion-title>Menu</ion-title>
-                </ion-toolbar>
-            </ion-header>
-            <ion-content>
-                <ion-list *ngIf="!loggedIn">
-                    <ion-menu-toggle auto-hide="false">
-                        <ion-item routerLink="/login" routerDirection="root">
-                            <ion-icon slot="start" name="home"></ion-icon>
-                            <ion-label>
-                                Login
-                            </ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
-                </ion-list>
-                <ion-list *ngIf="loggedIn">
-                    <ion-list-header>Menu</ion-list-header>
+<div class="d-flex" id="wrapper">
 
-                    <ion-menu-toggle autoHide="false">
-                        <ion-item routerLink="/favorites" routerDirection="root">
-                            <em class="fa fa-fw fa-star" slot="start"></em>
-                            <ion-label>Favoris</ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
+    <!-- Sidebar -->
+    <div class="navbar-nav sidebar border-right" id="sidebar-wrapper" [ngClass]="{'toggled' : hideMenu}">
+        <div class="sidebar-heading bg-light">Blyssbox</div>
+        <div class="list-group list-group-flush" *ngIf="!loggedIn">
+            <a routerLink="/login" class="list-group-item list-group-item-action" routerLinkActive="active"><em
+                    class="fa fa-fw fa-sign-in"></em> Login</a>
+        </div>
+        <div class="list-group list-group-flush" *ngIf="loggedIn">
+            <a routerLink="/favorites" class="list-group-item list-group-item-action" routerLinkActive="active"><em
+                    class="fa fa-fw fa-star"></em> Favoris</a>
+            <a routerLink="/openings" class="list-group-item list-group-item-action" routerLinkActive="active"><em
+                    class="fa fa-fw fa-window-maximize"></em> Ouvertures</a>
+            <a routerLink="/lightnings" class="list-group-item list-group-item-action" routerLinkActive="active"><em
+                    class="fa fa-fw fa-lightbulb-o"></em> Eclairages</a>
+            <a routerLink="/history" class="list-group-item list-group-item-action" routerLinkActive="active"><em
+                    class="fa fa-fw fa-history"></em> Historique</a>
+            <a routerLink="/status" class="list-group-item list-group-item-action" routerLinkActive="active"><em
+                    class="fa fa-fw fa-cogs"></em> Status</a>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
 
-                    <ion-menu-toggle autoHide="false">
-                        <ion-item routerLink="/openings" routerDirection="root">
-                            <em class="fa fa-fw fa-window-maximize" slot="start"></em>
-                            <ion-label>Ouvertures</ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
 
-                    <ion-menu-toggle autoHide="false">
-                        <ion-item routerLink="/lightnings" routerDirection="root">
-                            <em class="fa fa-fw fa-lightbulb-o" slot="start"></em>
-                            <ion-label>Eclairages</ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle" (click)="hideMenu = !hideMenu"><em class="fa fa-bars"></em></button>
+        </nav>
 
-                    <ion-menu-toggle autoHide="false">
-                        <ion-item routerLink="/history" routerDirection="root">
-                            <em class="fa fa-fw fa-history" slot="start"></em>
-                            <ion-label>Historique</ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
-                    <ion-menu-toggle autoHide="false">
-                        <ion-item routerLink="/status" routerDirection="root">
-                            <em class="fa fa-fw fa-cogs" slot="start"></em>
-                            <ion-label>Status</ion-label>
-                        </ion-item>
-                    </ion-menu-toggle>
-                </ion-list>
-            </ion-content>
-        </ion-menu>
-        <ion-router-outlet main></ion-router-outlet>
-    </ion-split-pane>
-</ion-app>
+</div>

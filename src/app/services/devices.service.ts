@@ -16,7 +16,8 @@ export class DevicesService {
       ref: '582864',
       pairingMode: 'BON',
       pairingCategory: ['favorites'],
-      positions: {ON: 'Position ON/Haut', OFF: 'Position OFF/Bas'}
+      positions: {ON: 'Position ON/Haut', OFF: 'Position OFF/Bas'},
+      icon: 'fa-keyboard-o'
     },
     P0SWK: {
       name: 'Télécommande multifonction murale Kalya',
@@ -28,7 +29,8 @@ export class DevicesService {
       ref: '637141',
       pairingMode: 'PPH',
       pairingCategory: ['favorites'],
-      positions: {ON: 'Position ON/Haut', OFF: 'Position OFF/Bas'}
+      positions: {ON: 'Position ON/Haut', OFF: 'Position OFF/Bas'},
+      icon: 'fa-keyboard-o'
     },
     P0SWDK: {
       name: 'Télécommande multifonction murale double Kalya',
@@ -40,7 +42,8 @@ export class DevicesService {
       ref: '637144',
       pairingMode: 'PPH',
       pairingCategory: ['favorites'],
-      positions: {1: 'Position ON/1', 2: 'Position OFF/2', 3: 'Position ON/3', 4: 'Position OFF/4'}
+      positions: {1: 'Position ON/1', 2: 'Position OFF/2', 3: 'Position ON/3', 4: 'Position OFF/4'},
+      icon: 'fa-keyboard-o'
     },
     P0RR3: {
       name: 'Télécommande multifonction 2011',
@@ -59,7 +62,8 @@ export class DevicesService {
         4: 'Touche 2/OFF',
         5: 'Touche 3/ON',
         6: 'Touche 3/OFF'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0RR5: {
       name: 'Télécommande multifonction 2012',
@@ -82,7 +86,8 @@ export class DevicesService {
         8: 'Touche 8',
         9: 'Touche 9',
         10: 'Touche 10'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0RR4: {
       name: 'Télécommande multifonction 2013',
@@ -101,7 +106,8 @@ export class DevicesService {
         4: 'Touche 2/OFF',
         5: 'Touche 3/ON',
         6: 'Touche 3/OFF'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0RLR4: {
       name: 'Télécommande multifonction LCD 2011',
@@ -122,7 +128,8 @@ export class DevicesService {
         6: 'Touche 3/OFF',
         7: 'Touche 4/ON',
         8: 'Touche 4/OFF'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0RLR8: {
       name: 'Télécommande multifonction LCD 2012',
@@ -151,7 +158,8 @@ export class DevicesService {
         14: 'Canal 14',
         15: 'Canal 15',
         16: 'Canal 16'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0RLR16: {
       name: 'Télécommande multifonction LCD 2013',
@@ -196,7 +204,8 @@ export class DevicesService {
         30: 'Touche 15/OFF',
         31: 'Touche 16/ON',
         32: 'Touche 16/OFF'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0RRF: {
       name: 'Télécommande confort multifonction',
@@ -215,7 +224,8 @@ export class DevicesService {
         4: 'Touche 2/OFF',
         5: 'Touche 3/ON',
         6: 'Touche 3/OFF'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P1DMP: {
       name: 'Détecteur de mouvement intérieur',
@@ -225,7 +235,8 @@ export class DevicesService {
       category: 'security',
       ref: '599012',
       pairingMode: 'P',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-podcast'
     },
     P1DMO: {
       name: 'Détecteur de mouvement extérieur',
@@ -235,7 +246,8 @@ export class DevicesService {
       category: 'security',
       ref: '599023',
       pairingMode: 'P',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-podcast'
     },
     P1DO: {
       name: 'Détecteur d\'ouverture',
@@ -245,7 +257,8 @@ export class DevicesService {
       category: 'security',
       ref: '599034',
       pairingMode: 'P',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-sign-in'
     },
     P1G: {
       name: 'Détecteur de bris de vitre',
@@ -255,7 +268,8 @@ export class DevicesService {
       category: 'security',
       ref: '599051',
       pairingMode: 'P',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-sign-in'
     },
     P1DOG: {
       name: 'Détecteur porte de garage',
@@ -265,7 +279,8 @@ export class DevicesService {
       category: 'security',
       ref: '599052',
       pairingMode: 'PP3S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-sign-in'
     },
     P1DOF: {
       name: 'Détecteur volet roulant',
@@ -275,7 +290,8 @@ export class DevicesService {
       category: 'security',
       ref: '599053',
       pairingMode: 'PP3S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-sign-in'
     },
     P1RS: {
       name: 'Télécommande pour alarme',
@@ -285,7 +301,8 @@ export class DevicesService {
       category: 'security',
       ref: '599045',
       pairingMode: 'P1RS',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-keyboard-o'
     },
     P1KR: {
       name: 'Clavier lecteur de badge pour alarme',
@@ -322,7 +339,8 @@ export class DevicesService {
         B: 'Scénario B',
         C: 'Scénario C',
         D: 'Scénario D'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P1TR: {
       name: 'Badge ou code utilisateur pour alarme',
@@ -359,7 +377,8 @@ export class DevicesService {
         B: 'Scénario B',
         C: 'Scénario C',
         D: 'Scénario D'
-      }
+      },
+      icon: 'fa-tag'
     },
     P1SI: {
       name: 'Sirène intérieure',
@@ -369,7 +388,8 @@ export class DevicesService {
       category: 'security',
       ref: '630466',
       pairingMode: 'B5S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-bullhorn'
     },
     P1SO: {
       name: 'Sirène extérieure flash',
@@ -379,7 +399,8 @@ export class DevicesService {
       category: 'security',
       ref: '599062',
       pairingMode: 'B5S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-bullhorn'
     },
     P1SO2: {
       name: 'Sirène extérieure flash 2014',
@@ -389,7 +410,8 @@ export class DevicesService {
       category: 'security',
       ref: '599062',
       pairingMode: 'B5S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-bullhorn'
     },
     P1P: {
       name: 'Bracelet médaillon d\'urgence',
@@ -399,7 +421,8 @@ export class DevicesService {
       category: 'security',
       ref: '599063',
       pairingMode: 'B5S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-tag'
     },
     USBW: {
       name: 'Montre téléphone d\'urgence',
@@ -409,7 +432,8 @@ export class DevicesService {
       category: 'security',
       ref: null,
       pairingMode: 'USB',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-tag'
     },
     FCAM: {
       name: 'Caméra IP WIFI intérieure',
@@ -419,7 +443,8 @@ export class DevicesService {
       category: 'cameras',
       ref: '599003',
       pairingMode: 'A',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     RCAM: {
       name: 'Caméra IP WIFI rotative intérieure',
@@ -429,7 +454,8 @@ export class DevicesService {
       category: 'cameras',
       ref: '599004',
       pairingMode: 'A',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     OCAM: {
       name: 'Caméra IP WIFI extérieure',
@@ -439,7 +465,8 @@ export class DevicesService {
       category: 'cameras',
       ref: '599005',
       pairingMode: 'A',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     DCAM: {
       name: 'Caméra IP WIFI rotative extérieure',
@@ -449,7 +476,8 @@ export class DevicesService {
       category: 'cameras',
       ref: '642149',
       pairingMode: 'A',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     FCAMHD2: {
       name: 'Caméra IP WIFI intérieure HD',
@@ -459,7 +487,8 @@ export class DevicesService {
       category: 'cameras',
       ref: '699520',
       pairingMode: 'A',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     IIP: {
       name: 'Interphone Vidéo blanc',
@@ -468,7 +497,8 @@ export class DevicesService {
       alert: null,
       category: 'security',
       pairingMode: 'IIP',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     IIP_B: {
       name: 'Interphone Vidéo noir',
@@ -477,7 +507,8 @@ export class DevicesService {
       alert: null,
       category: 'security',
       pairingMode: 'IIP',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     IIP_S: {
       name: 'Interphone Vidéo métal',
@@ -486,7 +517,8 @@ export class DevicesService {
       alert: null,
       category: 'security',
       pairingMode: 'IIP',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     IIPM: {
       name: 'Module IP interphone',
@@ -495,7 +527,8 @@ export class DevicesService {
       alert: null,
       category: 'security',
       pairingMode: 'IIPM',
-      pairingCategory: ['cameras']
+      pairingCategory: ['cameras'],
+      icon: 'fa-video-camera'
     },
     P1S: {
       name: 'Détecteur de fumée',
@@ -505,7 +538,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599007',
       pairingMode: 'PP',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-podcast'
     },
     P1C: {
       name: 'Détecteur de monoxyde de carbone',
@@ -515,7 +549,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599054',
       pairingMode: 'PP',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-podcast'
     },
     P1GZ: {
       name: 'Détecteur de gaz',
@@ -525,7 +560,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599055',
       pairingMode: 'PP',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-podcast'
     },
     P1W: {
       name: 'Détecteur d\'inondation',
@@ -535,7 +571,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599057',
       pairingMode: 'PP3S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-podcast'
     },
     P1F: {
       name: 'Détecteur de gel',
@@ -545,7 +582,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599058',
       pairingMode: 'PP3S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-snowflake-o',
     },
     P1FF: {
       name: 'Détecteur de panne congélateur',
@@ -555,7 +593,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599059',
       pairingMode: 'PP3S',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-snowflake-o'
     },
     P1EF: {
       name: 'Détecteur de panne d\'électricité',
@@ -565,7 +604,8 @@ export class DevicesService {
       category: 'domestic',
       ref: '599060',
       pairingMode: 'B',
-      pairingCategory: ['security']
+      pairingCategory: ['security'],
+      icon: 'fa-bolt'
     },
     P0R: {
       name: 'Prise télécommandée pour éclairage intérieur',
@@ -575,7 +615,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582874',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-plug'
     },
     P0RM: {
       name: 'Mini prise télécommandée pour éclairage intérieure',
@@ -585,7 +626,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '664290',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-plug'
     },
     P0RD: {
       name: 'Prise télécommandée variateur pour éclairage intérieur',
@@ -595,7 +637,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582882',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-plug'
     },
     P0RO: {
       name: 'Prise télécommandée pour éclairage extérieur',
@@ -605,7 +648,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582875',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-plug'
     },
     P0RS: {
       name: 'Douille télécommandée pour éclairage intérieur',
@@ -615,7 +659,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582863',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-lightbulb-o'
     },
     P0MLT: {
       name: 'Micro module émetteur pour éclairage intérieur',
@@ -627,7 +672,8 @@ export class DevicesService {
       ref: '599031',
       pairingMode: 'B',
       pairingCategory: ['lighting'],
-      positions: {ON: 'Position ON/1', OFF: 'Position OFF/2'}
+      positions: {ON: 'Position ON/1', OFF: 'Position OFF/2'},
+      icon: 'fa-lightbulb-o'
     },
     P0MLR: {
       name: 'Micro module récepteur pour éclairage intérieur',
@@ -637,7 +683,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582866',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-lightbulb-o'
     },
     P0MLRDPK: {
       name: 'Module récepteur pour double prise Kalya',
@@ -647,7 +694,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '637139',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-plug'
     },
     P0MLRW: {
       name: 'Micro module récepteur pour éclairage extérieur',
@@ -656,7 +704,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582856',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-lightbulb-o'
     },
     P0SC: {
       name: 'Interrupteur télécommandé pour éclairage intérieur',
@@ -666,7 +715,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582865',
       pairingMode: 'B3SC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-toggle-on'
     },
     P0RG: {
       name: 'Piquet de jardin télécommandé',
@@ -676,7 +726,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582870',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-lightbulb-o'
     },
     P0IO: {
       name: 'Détecteur de mouvement pour éclairage extérieur',
@@ -686,7 +737,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582861',
       pairingMode: 'PW',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-podcast'
     },
     P0II: {
       name: 'Détecteur de mouvement pour éclairage intérieur',
@@ -696,7 +748,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '582862',
       pairingMode: 'PW',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-podcast'
     },
     P0IIK: {
       name: 'Détecteur de mouvement pour éclairage intérieur Kalya',
@@ -706,7 +759,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '637143',
       pairingMode: 'PW',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-podcast'
     },
     P0TS: {
       name: 'Capteur crépusculaire pour éclairage extérieur',
@@ -716,7 +770,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '599047',
       pairingMode: 'PPW',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-sun-o'
     },
     P0SCN: {
       name: 'Interrupteur télécommandé sans neutre',
@@ -726,7 +781,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '630450',
       pairingMode: 'BC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-toggle-on'
     },
     P0SCNK: {
       name: 'Interrupteur télécommandé sans neutre Kalya',
@@ -736,7 +792,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '637140',
       pairingMode: 'BLC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-toggle-on'
     },
     P0MRT: {
       name: 'Micro module récepteur pour télérupteur',
@@ -746,7 +803,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '630457',
       pairingMode: 'BC',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-toggle-on'
     },
     P2MLR: {
       name: 'Micro module éclairage bidirectionnel avec phase',
@@ -756,7 +814,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '664294',
       pairingMode: 'B',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-toggle-on'
     },
     P2MLR2: {
       name: 'Micro module éclairage bidirectionnel avec phase + neutre',
@@ -766,7 +825,8 @@ export class DevicesService {
       category: 'lighting',
       ref: '664293',
       pairingMode: 'B',
-      pairingCategory: ['lighting']
+      pairingCategory: ['lighting'],
+      icon: 'fa-toggle-on'
     },
     P0MF6: {
       name: 'Motorisation 6Nm pour volets roulants et stores',
@@ -776,7 +836,8 @@ export class DevicesService {
       category: 'opening',
       ref: '599011',
       pairingMode: 'P0MF',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MF20: {
       name: 'Motorisation 20Nm pour volets roulants et stores',
@@ -786,7 +847,8 @@ export class DevicesService {
       category: 'opening',
       ref: '599013',
       pairingMode: 'P0MF',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MF30: {
       name: 'Motorisation 30Nm pour volets roulants et stores',
@@ -796,7 +858,8 @@ export class DevicesService {
       category: 'opening',
       ref: '599014',
       pairingMode: 'P0MF',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MLS: {
       name: 'Motorisation pour volets à battants',
@@ -806,7 +869,8 @@ export class DevicesService {
       category: 'opening',
       ref: '651332',
       pairingMode: 'P0MF',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKV: {
       name: 'Motorisation à vérins pour portail à battants',
@@ -816,7 +880,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582852',
       pairingMode: 'P0MKV',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKV2: {
       name: 'Motorisation à vérins pour portail à battants 2013',
@@ -826,7 +891,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582852',
       pairingMode: 'P0MKV2',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKV3: {
       name: 'Kit de motorisation portail à pistons',
@@ -836,7 +902,8 @@ export class DevicesService {
       category: 'opening',
       ref: '695044',
       pairingMode: 'P0MKV2',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKA: {
       name: 'Motorisation à bras pour portail à battants',
@@ -846,7 +913,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582847',
       pairingMode: 'P0MKV',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKA2: {
       name: 'Motorisation à bras pour portail à battants 2013',
@@ -856,7 +924,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582847',
       pairingMode: 'P0MKV2',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKS: {
       name: 'Motorisation pour portail coulissant',
@@ -866,7 +935,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582848',
       pairingMode: 'M',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKG: {
       name: 'Motorisation pour porte de garage',
@@ -876,7 +946,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582849',
       pairingMode: 'P0MKG',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0MKG2: {
       name: 'Motorisation pour porte de garage',
@@ -886,7 +957,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582849',
       pairingMode: 'P0MKG2',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0K: {
       name: 'Clavier à codes pour motorisation',
@@ -908,7 +980,8 @@ export class DevicesService {
         7: 'Touche 7',
         8: 'Touche 8',
         9: 'Touche 9'
-      }
+      },
+      icon: 'fa-keyboard-o'
     },
     P0R4: {
       name: 'Télécommande pour motorisation',
@@ -920,7 +993,8 @@ export class DevicesService {
       ref: '582858',
       pairingMode: 'C',
       pairingCategory: ['opening'],
-      positions: {1: 'Touche 1', 2: 'Touche 2', 3: 'Touche 3', 4: 'Touche 4'}
+      positions: {1: 'Touche 1', 2: 'Touche 2', 3: 'Touche 3', 4: 'Touche 4'},
+      icon: 'fa-keyboard-o'
     },
     P0MR: {
       name: 'Récepteur universel pour motorisation',
@@ -930,7 +1004,8 @@ export class DevicesService {
       category: 'opening',
       ref: '582857',
       pairingMode: 'P0MR',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-microchip'
     },
     P0MFM: {
       name: 'Micro module récepteur pour volet',
@@ -940,7 +1015,8 @@ export class DevicesService {
       category: 'opening',
       ref: '599008',
       pairingMode: 'BLC',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-microchip'
     },
     P0SF: {
       name: 'Interrupteur télécommandé pour volet',
@@ -950,7 +1026,8 @@ export class DevicesService {
       category: 'opening',
       ref: '599009',
       pairingMode: 'BLC',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0SFK: {
       name: 'Interrupteur télécommandé pour volet Kalya',
@@ -960,7 +1037,8 @@ export class DevicesService {
       category: 'opening',
       ref: '637142',
       pairingMode: 'BLC',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P2MFM: {
       name: 'Micro module commande volet bidirectionnel',
@@ -970,7 +1048,8 @@ export class DevicesService {
       category: 'opening',
       ref: '664295',
       pairingMode: 'B',
-      pairingCategory: ['opening']
+      pairingCategory: ['opening'],
+      icon: 'fa-window-maximize'
     },
     P0VM: {
       name: 'Micro module récepteur pour VMC',
@@ -980,7 +1059,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599024',
       pairingMode: 'BLC',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-recycle'
     },
     P1RR: {
       name: 'Prise télécommandée pour chauffage',
@@ -990,7 +1070,8 @@ export class DevicesService {
       category: 'climatic',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-thermometer'
     },
     P1RPM: {
       name: 'Capteur d\'énergie',
@@ -1000,7 +1081,8 @@ export class DevicesService {
       category: 'energy',
       ref: '599018',
       pairingMode: 'BW',
-      pairingCategory: ['climatic', 'energy']
+      pairingCategory: ['climatic', 'energy'],
+      icon: 'fa-flash'
     },
     P1MHR: {
       name: 'Récepteur chauffage électrique on/off',
@@ -1010,7 +1092,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599020',
       pairingMode: 'BW',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-fire'
     },
     P1MHWR: {
       name: 'Récepteur chauffage électrique fil pilote',
@@ -1020,7 +1103,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599019',
       pairingMode: 'BW',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-fire'
     },
     P1MCH: {
       name: 'Récepteur chaudière',
@@ -1030,7 +1114,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599021',
       pairingMode: 'BW',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-fire'
     },
     P1MFC: {
       name: 'Récepteur cumulus',
@@ -1040,7 +1125,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599022',
       pairingMode: 'B',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-fire'
     },
     P1TV: {
       name: 'Robinet thermostatique programmable',
@@ -1050,7 +1136,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599029',
       pairingMode: 'P1TV',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-fire'
     },
     P1WT: {
       name: 'Thermostat programmable',
@@ -1060,7 +1147,8 @@ export class DevicesService {
       category: 'climatic',
       ref: '599017',
       pairingMode: 'P1WT',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-fire'
     },
     P1CA: {
       name: 'Capteur pince de consommation d\'électricité',
@@ -1070,7 +1158,8 @@ export class DevicesService {
       category: 'energy',
       ref: '599038',
       pairingMode: 'PP3S',
-      pairingCategory: ['energy']
+      pairingCategory: ['energy'],
+      icon: 'fa-flash'
     },
     WUSB: {
       name: 'Récepteur USB pour capteurs de consommation impulsionnel',
@@ -1080,7 +1169,8 @@ export class DevicesService {
       category: 'energy',
       ref: '599036',
       pairingMode: 'USB',
-      pairingCategory: ['energy']
+      pairingCategory: ['energy'],
+      icon: 'fa-flash'
     },
     WE: {
       name: 'Capteur impulsionnel de consommation d\'électricité',
@@ -1090,7 +1180,8 @@ export class DevicesService {
       category: 'energy',
       ref: '599039',
       pairingMode: 'S',
-      pairingCategory: ['energy']
+      pairingCategory: ['energy'],
+      icon: 'fa-flash'
     },
     WW: {
       name: 'Compteur d\'eau avec capteur impulsionnel',
@@ -1100,7 +1191,8 @@ export class DevicesService {
       category: 'energy',
       ref: '599037',
       pairingMode: 'S',
-      pairingCategory: ['energy']
+      pairingCategory: ['energy'],
+      icon: 'fa-flash'
     },
     P1RN: {
       name: ' Capteur de pluie',
@@ -1110,7 +1202,8 @@ export class DevicesService {
       category: 'weather',
       ref: '599046',
       pairingMode: 'C',
-      pairingCategory: ['weather']
+      pairingCategory: ['weather'],
+      icon: 'fa-cloud'
     },
     USBWS: {
       name: 'Station météo',
@@ -1120,7 +1213,8 @@ export class DevicesService {
       category: 'weather',
       ref: '599041',
       pairingMode: 'USB',
-      pairingCategory: ['weather']
+      pairingCategory: ['weather'],
+      icon: 'fa-cloud'
     },
     P0SHT: {
       name: 'Sonde d\'humidité et de température',
@@ -1130,7 +1224,8 @@ export class DevicesService {
       category: 'weather',
       ref: '630467',
       pairingMode: 'PP',
-      pairingCategory: ['climatic']
+      pairingCategory: ['climatic'],
+      icon: 'fa-tachometer'
     },
     P0P1R: {
       name: 'Répéteur',
@@ -1140,7 +1235,8 @@ export class DevicesService {
       category: 'miscellaneous',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-microchip'
     },
     B: {
       name: 'Blyssbox',
@@ -1150,7 +1246,8 @@ export class DevicesService {
       category: 'gateway',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-server'
     },
     HORN: {
       name: 'Sirène intégrée',
@@ -1160,7 +1257,8 @@ export class DevicesService {
       category: 'others',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-bullhorn'
     },
     WARN_SIGNAL: {
       name: 'Message de dissuasion',
@@ -1170,7 +1268,8 @@ export class DevicesService {
       category: 'others',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-comment-o'
     },
     CAMERA: {
       name: 'Caméra externe',
@@ -1180,7 +1279,8 @@ export class DevicesService {
       category: 'others',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-video-camera'
     },
     PLAY: {
       name: 'Touche play',
@@ -1191,7 +1291,8 @@ export class DevicesService {
       category: 'others',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-play'
     },
     UNKNOW: {
       name: 'Type non reconnu',
@@ -1200,7 +1301,8 @@ export class DevicesService {
       category: 'default',
       ref: null,
       pairingMode: null,
-      pairingCategory: null
+      pairingCategory: null,
+      icon: 'fa-info'
     }
   };
   constructor() { }

@@ -1,21 +1,33 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
+import { OpeningsPageComponent } from './pages/openings-page/openings-page.component';
+import { StatusPageComponent } from './pages/status-page/status-page.component';
+import { LightningsPageComponent } from './pages/lightnings-page/lightnings-page.component';
+import { HistoryPageComponent } from './pages/history-page/history-page.component';
+import { environment } from '../environments/environment';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
-  { path: 'openings', loadChildren: './openings/openings.module#OpeningsPageModule' },
-  { path: 'status', loadChildren: './status/status.module#StatusPageModule' },
-  { path: 'lightnings', loadChildren: './lightnings/lightnings.module#LightningsPageModule' },
-  { path: 'history', loadChildren: './history/history.module#HistoryPageModule' }
+  { path: 'login', component: LoginPageComponent },
+  { path: 'favorites', component: FavoritesPageComponent },
+  { path: 'openings', component: OpeningsPageComponent },
+  { path: 'status', component: StatusPageComponent },
+  { path: 'lightnings', component: LightningsPageComponent },
+  { path: 'history', component: HistoryPageComponent }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: true })
-  ],
+  imports: [RouterModule.forRoot(routes,
+    {
+      scrollPositionRestoration: 'enabled',
+      useHash: true,
+      onSameUrlNavigation: 'reload',
+      anchorScrolling: 'enabled',
+    //  enableTracing: !environment.production
+    })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

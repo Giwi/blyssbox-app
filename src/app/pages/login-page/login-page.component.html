@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card card-login mx-auto mt-5 welcome-card">
+        <div class="card-header">Se connecter</div>
+        <div class="card-body">
+            <form #loginForm="ngForm" novalidate>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <input [(ngModel)]="login.username" id="inputName" name="username" type="text"
+                               #username="ngModel" spellcheck="false" autocapitalize="off" autocomplete
+                               required autofocus="autofocus" placeholder="Identifiant" class="form-control">
+                        <label for="inputName">Identifiant</label>
+                        <p [hidden]="username.valid || submitted == false" class="alert alert-danger">
+                            L'identifiant est obligatoire
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <input id="inputPassword" class="form-control" [(ngModel)]="login.password" name="password"
+                               autocomplete
+                               type="password" #password="ngModel" required placeholder="Mot de passe">
+                        <label for="inputPassword">Mot de passe</label>
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me">
+                            Remember Password
+                        </label>
+                    </div>
+                </div>-->
+                <button class="btn btn-primary btn-block" (click)="onLogin(loginForm)">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+

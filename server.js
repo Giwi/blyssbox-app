@@ -49,7 +49,8 @@ app.put(/^\/(ui)\/.+$/, (req, res) => {
             res.json({status: error});
         });
 });
-app.listen(process.env.PORT || 8001, () => {
+app.listen(process.env.PORT || 8080, () => {
+    console.log('started');
     /* exec('/usr/bin/chromium-browser --full-screen --noerrdialogs --disable-infobars --kiosk http://localhost:8001', (err, stdout, stderr) => {
          if (err) {
              // node couldn't execute the command

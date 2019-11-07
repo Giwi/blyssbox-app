@@ -11,7 +11,7 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 })
 export class BlyssboxService {
   private readonly handleError: HandleError;
-  private uri = 'http://localhost:8001/ui/v';
+  private uri = '/ui/v';
   private httpOptions = {
     headers: new HttpHeaders({
       'If-Modified-Since': 'Mon, 27 Mar 1972 00:00:00 GMT',

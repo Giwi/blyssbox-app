@@ -19,7 +19,7 @@ const headers = {
 
 const app = express()
     .use(morgan('combined'))
-    .use(express.static(__dirname + '/www'))
+    .use(express.static(__dirname + '/dist/blyssbox'))
     .use(bodyParser.urlencoded({extended: false}))
     .use(bodyParser.json())
     .use(cors());
@@ -49,7 +49,7 @@ app.put(/^\/(ui)\/.+$/, (req, res) => {
             res.json({status: error});
         });
 });
-app.listen(8001, () => {
+app.listen(process.env.PORT || 8001, () => {
     /* exec('/usr/bin/chromium-browser --full-screen --noerrdialogs --disable-infobars --kiosk http://localhost:8001', (err, stdout, stderr) => {
          if (err) {
              // node couldn't execute the command

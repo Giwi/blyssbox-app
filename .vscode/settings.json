@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/7c77444c-e04b-4b25-9dbb-c91967a8aa37/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/blyssbox",
+    "appService.deploySubpath": ""
+}

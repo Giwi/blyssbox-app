@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
 
   public checkboxGroupForm: FormGroup;
   favorites = [];
-  security:string;
+  security = { INTRUSION: '', DOMESTIC: '' };
 
   constructor(
     private logger: NGXLogger,
@@ -32,15 +32,19 @@ export class HomePageComponent implements OnInit {
     this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.doRefresh());
   }
 
+  runSecurity(serial: string) {
+    //this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.doRefresh());
+  }
+
   doRefresh() {
     this.logger.debug('HomePageComponent', 'doRefresh');
     this.blyssboxService.getFavorites().subscribe(f => {
       this.favorites = f;
       this.logger.debug('HomePageComponent', 'doRefresh', 'getFavorites', this.favorites);
     });
-    this.blyssboxService.getGatewayCategoryMode('INTRUSION').subscribe(f => {
-      this.security = f.mode;
-      this.logger.debug('HomePageComponent', 'doRefresh', 'getGatewayModes', this.security);
+    this.blyssboxService.getGatewayModes().subscribe(f => {
+      this.logger.debug('HomePageComponent', 'doRefresh', 'getGatewayModes', f);
+      f.modeList.forEach(k => this.security[ k.subCategory ] = k.mode);
     });
   }
 

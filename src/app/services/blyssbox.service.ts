@@ -97,7 +97,7 @@ export class BlyssboxService {
   }
 
   getHistory(startDate, max, endDate, page) {
-    return this.http.post(`${this.uri}2/history;jsessionid=${this.userService.getSession()}`, {
+    return this.http.post(this.uri + '2/history;jsessionid=' + this.userService.getSession(), {
       startDate,
       max,
       endDate,
@@ -107,36 +107,15 @@ export class BlyssboxService {
       .pipe(map(response => response));
   }
 
-  getGatewayConnection() {
-    return this.http.get(`${this.uri}2/gateway/connection;jsessionid=${this.userService.getSession()}`, this.httpOptions)
+  getGatewayConnection()  {
+    return this.http.get(this.uri + '2/gateway/connection;jsessionid=' + this.userService.getSession(), this.httpOptions)
       .pipe(catchError(this.handleError<any>('getGatewayConnection')))
       .pipe(map(response => response));
   }
 
   setGatewayReboot() {
-    return this.http.put(`${this.uri}2/gateway/reboot;jsessionid=${this.userService.getSession()}`, {}, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('setGatewayReboot')))
-      .pipe(map(response => response));
-  }
-
-  sendPushToken() {
-    return this.http.post(`${this.uri}2/media/mobile/push;jsessionid=${this.userService.getSession()}`, {
-      'token': 'APA91bGLoFKxs5lYedUAm7OsbrmPo3cKZqNYxopA4kNPz82C_ZD5cZZ3PkQhsa_CxzsNBF_QqUR6mFIhKUGkydaGtJ0Pai5my4eh3VVVY9_351j88HbdyLQ',
-      'type': 'ANDROID'
-    }, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('sendPushToken')))
-      .pipe(map(response => response));
-  }
-
-  getMedias() {
-    return this.http.get(`${this.uri}2/media;jsessionid=${this.userService.getSession()}`, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('getMedias')))
-      .pipe(map(response => response));
-  }
-
-  getGatewayModes(mode: 'INTRUSION' | 'ASSISTANCE' | 'DOMESTIC') {
-    return this.http.get(`${this.uri}2/gateway/mode/${mode};jsessionid=${this.userService.getSession()}`, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('getGatewayModes')))
+    return this.http.put(this.uri + '2/gateway/reboot;jsessionid=' + this.userService.getSession(), {}, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getGatewayConnection')))
       .pipe(map(response => response));
   }
 }

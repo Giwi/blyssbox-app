@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { BlyssboxService } from '../../services/blyssbox.service';
 import { UserService } from '../../services/user.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
 
-  public checkboxGroupForm: FormGroup;
+  timer;
   favorites = [];
   security = { INTRUSION: '', DOMESTIC: '' };
 
@@ -19,21 +18,27 @@ export class HomePageComponent implements OnInit {
     private logger: NGXLogger,
     private blyssboxService: BlyssboxService,
     private userService: UserService,
-    private formBuilder: FormBuilder
   ) {
   }
 
   ngOnInit() {
     this.logger.debug('HomePageComponent', 'ngOnInit');
-    this.userService.isLoggedIn().then(() => this.doRefresh());
+    this.userService.isLoggedIn().then(() => {
+      this.doRefresh();
+      this.timer = setInterval(this.doRefresh.bind(this), 2000);
+    });
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
   }
 
   run(serial: number) {
     this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.doRefresh());
   }
 
-  runSecurity(serial: string) {
-    //this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.doRefresh());
+  runSecurity(category: string, value: string) {
+    this.blyssboxService.setGatewayCategoryMode(category, value).subscribe(() => this.doRefresh());
   }
 
   doRefresh() {

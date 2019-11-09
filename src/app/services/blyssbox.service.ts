@@ -124,4 +124,10 @@ export class BlyssboxService {
       .pipe(catchError(this.handleError<any>('getGatewayModes')))
       .pipe(map(response => response));
   }
+
+  setGatewayCategoryMode(category: string, value: string) {
+    return this.http.put(`${this.uri}2/gateway/${category}/mode;jsessionid=${this.userService.getSession()}`, {key: "mode", value}, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('setGatewayCategoryMode')))
+      .pipe(map(response => response));
+  }
 }

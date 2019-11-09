@@ -14,13 +14,13 @@
 <h2 class="text-white mt-3">Ma sécurité</h2>
 <div class="w-100 d-flex justify-content-center align-items-center flex-wrap">
     <div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="security['INTRUSION']">
-        <label class="btn-primary" ngbButtonLabel>
+        <label class="btn-primary" ngbButtonLabel (click)="runSecurity('INTRUSION', 'OFF')">
             <input ngbButton type="radio" value="OFF"> Mode éteint
         </label>
-        <label class="btn-primary" ngbButtonLabel>
+        <label class="btn-primary" ngbButtonLabel (click)="runSecurity('INTRUSION', 'PRESENCE')">
             <input ngbButton type="radio" value="PRESENCE"> Mode partiel
         </label>
-        <label class="btn-primary" ngbButtonLabel>
+        <label class="btn-primary" ngbButtonLabel (click)="runSecurity('INTRUSION', 'ON')">
             <input ngbButton type="radio" value="ON"> Mode total
         </label>
     </div>
@@ -36,7 +36,7 @@
         <div class="card-footer text-white clearfix small z-1 click">
             <div class="custom-control custom-switch float-right" >
                 <input type="checkbox" class="custom-control-input" id="toggle_HOME"
-                       (change)="runSecurity('DOMESTIC')"
+                       (change)="runSecurity('DOMESTIC', security['DOMESTIC'] === 'ON'?'ON':'OFF')"
                        [checked]="security['DOMESTIC'] === 'ON'">
                 <label class="custom-control-label" for="toggle_HOME"> </label>
             </div>
@@ -52,7 +52,7 @@
         <div class="card-footer text-white clearfix small z-1 click">
             <div class="custom-control custom-switch float-right" >
                 <input type="checkbox" class="custom-control-input" id="toggle_ASSISTANCE"
-                       (change)="runSecurity('ASSISTANCE')"
+                       (change)="runSecurity('ASSISTANCE', security['ASSISTANCE'] === 'ON'?'ON':'OFF')"
                        [checked]="security['ASSISTANCE'] === 'ON'">
                 <label class="custom-control-label" for="toggle_ASSISTANCE"> </label>
             </div>

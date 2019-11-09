@@ -5,13 +5,14 @@ import { NGXLogger } from 'ngx-logger';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlyssboxService {
   private readonly handleError: HandleError;
-  private uri = 'http://localhost:8001/ui/v';
+  private uri = environment.proxyURL;
   private httpOptions = {
     headers: new HttpHeaders({
       'If-Modified-Since': 'Mon, 27 Mar 1972 00:00:00 GMT',
@@ -31,7 +32,7 @@ export class BlyssboxService {
   }
 
   login(login: string, password: string): Observable<any> {
-    return this.http.post(this.uri + '2/auth', { login, password, ihm: 'fx' }, this.httpOptions)
+    return this.http.post(`${this.uri}2/auth`, { login, password, ihm: 'fx' }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('login')))
       .pipe(
         mergeMap(response => {
@@ -50,13 +51,13 @@ export class BlyssboxService {
   }
 
   getFavorites() {
-    return this.http.get(this.uri + '2/favorite;jsessionid=' + this.userService.getSession(), this.httpOptions)
+    return this.http.get(`${this.uri}2/favorite;jsessionid=${this.userService.getSession()}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getFavorites')))
       .pipe(map(response => response.favorites || []));
   }
 
   getDevices(category: string, subCategory: string) {
-    return this.http.post(this.uri + '5/device;jsessionid=' + this.userService.getSession(), {
+    return this.http.post(`${this.uri}5/device;jsessionid=${this.userService.getSession()}`, {
       capability: ['ACTUATOR', 'IN_TEMP', 'IN_HUM']
     }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getDevices')))
@@ -66,7 +67,7 @@ export class BlyssboxService {
   }
 
   getAllDevices() {
-    return this.http.post(this.uri + '5/device;jsessionid=' + this.userService.getSession(), {
+    return this.http.post(`${this.uri}5/device;jsessionid=${this.userService.getSession()}`, {
       capability: ['ACTUATOR', 'IN_TEMP', 'IN_HUM']
     }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getDevices')))
@@ -78,25 +79,25 @@ export class BlyssboxService {
   }
 
   setFavoriteStart(serial: number) {
-    return this.http.put(this.uri + '2/favorite/' + serial + '/start;jsessionid=' + this.userService.getSession(), {}, this.httpOptions)
+    return this.http.put(`${this.uri}2/favorite/${serial}/start;jsessionid=${this.userService.getSession()}`, {}, this.httpOptions)
       .pipe(catchError(this.handleError<any>('setFavoriteStart')))
       .pipe(map(response => response));
   }
 
   setFavoriteStop(serial: number) {
-    return this.http.put(this.uri + '2/favorite/' + serial + '/stop;jsessionid=' + this.userService.getSession(), {}, this.httpOptions)
+    return this.http.put(`${this.uri}2/favorite/${serial}/stop;jsessionid=${this.userService.getSession()}`, {}, this.httpOptions)
       .pipe(catchError(this.handleError<any>('setFavoriteStop')))
       .pipe(map(response => response));
   }
 
   setDeviceStatus(serial: string, status: string) {
-    return this.http.put(this.uri + '2/device/status;jsessionid=' + this.userService.getSession(), { serial, status }, this.httpOptions)
+    return this.http.put(`${this.uri}2/device/status;jsessionid=${this.userService.getSession()}`, { serial, status }, this.httpOptions)
       .pipe(catchError(this.handleError<any>('setDeviceStatus')))
       .pipe(map(response => response));
   }
 
   getHistory(startDate, max, endDate, page) {
-    return this.http.post(this.uri + '2/history;jsessionid=' + this.userService.getSession(), {
+    return this.http.post(`${this.uri}2/history;jsessionid=${this.userService.getSession()}`, {
       startDate,
       max,
       endDate,
@@ -106,15 +107,36 @@ export class BlyssboxService {
       .pipe(map(response => response));
   }
 
-  getGatewayConnection()  {
-    return this.http.get(this.uri + '2/gateway/connection;jsessionid=' + this.userService.getSession(), this.httpOptions)
+  getGatewayConnection() {
+    return this.http.get(`${this.uri}2/gateway/connection;jsessionid=${this.userService.getSession()}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getGatewayConnection')))
       .pipe(map(response => response));
   }
 
   setGatewayReboot() {
-    return this.http.put(this.uri + '2/gateway/reboot;jsessionid=' + this.userService.getSession(), {}, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('getGatewayConnection')))
+    return this.http.put(`${this.uri}2/gateway/reboot;jsessionid=${this.userService.getSession()}`, {}, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('setGatewayReboot')))
+      .pipe(map(response => response));
+  }
+
+  sendPushToken() {
+    return this.http.post(`${this.uri}2/media/mobile/push;jsessionid=${this.userService.getSession()}`, {
+      'token': 'APA91bGLoFKxs5lYedUAm7OsbrmPo3cKZqNYxopA4kNPz82C_ZD5cZZ3PkQhsa_CxzsNBF_QqUR6mFIhKUGkydaGtJ0Pai5my4eh3VVVY9_351j88HbdyLQ',
+      'type': 'ANDROID'
+    }, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('sendPushToken')))
+      .pipe(map(response => response));
+  }
+
+  getMedias() {
+    return this.http.get(`${this.uri}2/media;jsessionid=${this.userService.getSession()}`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getMedias')))
+      .pipe(map(response => response));
+  }
+
+  getGatewayModes(mode: 'INTRUSION' | 'ASSISTANCE' | 'DOMESTIC') {
+    return this.http.get(`${this.uri}2/gateway/mode/${mode};jsessionid=${this.userService.getSession()}`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getGatewayModes')))
       .pipe(map(response => response));
   }
 }

@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
       this.blyssboxService.login(this.login.username, this.login.password).subscribe(u => {
         this.userService.isLoggedIn().then(logged => {
           if (logged) {
-            this.router.navigateByUrl('/favorites');
+            this.router.navigateByUrl('/home');
           } else {
             this.toastrService.error('Bad user or password');
           }

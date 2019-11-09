@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { Connection, MessageBus } from 'ngx-message-bus';
+import { BlyssboxService } from './services/blyssbox.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
               private toastrService: ToastrService,
               private messageBus: MessageBus,
               private router: Router,
+              private blyssboxService: BlyssboxService,
               private userService: UserService) {
 
   }
@@ -45,6 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userService.isLoggedIn().then(loggedIn => {
       this.logger.debug('AppComponent', 'checkLoginStatus', loggedIn);
       this.loaded = true;
+      // this.blyssboxService.sendPushToken().subscribe(r => console.log('sendPushToken', r));
       this.updateLoggedInStatus(!!loggedIn);
     });
   }

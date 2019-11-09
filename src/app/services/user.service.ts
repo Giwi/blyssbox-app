@@ -9,9 +9,9 @@ import { Connection, MessageBus } from 'ngx-message-bus';
 export class UserService {
   private userData: {
     sessionId: string,
-    user: any,
-    gateway: any,
-    popups: any,
+    user?: any,
+    gateway?: any,
+    popups?: any,
   };
   private USER_DATA = 'blyss';
   private myConnection: Connection;
@@ -65,13 +65,17 @@ export class UserService {
           this.userData = value;
           resolve(this.userData);
         } else {
-          resolve(false);
+          reject(false);
         }
       }, err => reject(err));
     });
   }
 
+  getUserData() {
+    return (this.userData || { sessionId: '' });
+  }
+
   getSession() {
-    return (this.userData || { sessionId: '' }).sessionId;
+    return this.getUserData().sessionId;
   }
 }

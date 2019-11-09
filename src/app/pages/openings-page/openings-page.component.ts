@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { RefreshTitleComponent } from '../../components/refresh-title/refresh-title.component';
 import { NGXLogger } from 'ngx-logger';
 import { BlyssboxService } from '../../services/blyssbox.service';
@@ -10,11 +10,11 @@ import { UserService } from '../../services/user.service';
   templateUrl: './openings-page.component.html',
   styleUrls: ['./openings-page.component.scss']
 })
-export class OpeningsPageComponent implements OnInit {
+export class OpeningsPageComponent implements OnInit, OnDestroy {
   @ViewChild('refresher', { static: true }) refresher: RefreshTitleComponent;
 
   openings = [];
-  loading = false;
+  timer;
 
   constructor(
     private logger: NGXLogger,
@@ -26,7 +26,14 @@ export class OpeningsPageComponent implements OnInit {
 
   ngOnInit() {
     this.logger.debug('OpeningsPageComponent', 'ngOnInit');
-    this.userService.isLoggedIn().then(() => this.doRefresh());
+    this.userService.isLoggedIn().then(() => {
+      this.doRefresh();
+      this.timer = setInterval(this.doRefresh.bind(this), 2000);
+    });
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
   }
 
   run(serial: string, action: string) {
@@ -37,14 +44,15 @@ export class OpeningsPageComponent implements OnInit {
     } else {
       a = action === 'OFF' ? 'ON' : 'OFF';
     }
-    this.blyssboxService.setDeviceStatus(serial, a)
-      .subscribe(() => this.doRefresh());
+    this.blyssboxService.setDeviceStatus(serial, a).subscribe(() => {
+    });
   }
 
   runToggle(serial: string) {
     this.logger.debug('OpeningsPageComponent', 'runToggle', serial);
     this.blyssboxService.setDeviceStatus(serial, 'TOGGLE')
-      .subscribe(() => this.doRefresh());
+      .subscribe(() => {
+      });
   }
 
   getDevice(type: string) {
@@ -52,13 +60,11 @@ export class OpeningsPageComponent implements OnInit {
   }
 
   doRefresh() {
-    this.loading = true;
     this.blyssboxService.getDevices('OPENINGS', '')
       .subscribe(f => {
         this.openings = f;
         this.logger.debug('OpeningsPageComponent', 'doRefresh', this.openings);
         this.refresher.stop();
-        this.loading = false;
       });
   }
 

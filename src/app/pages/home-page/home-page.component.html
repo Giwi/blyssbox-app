@@ -1,0 +1,23 @@
+<h1><em class="fa fa-home"></em> Ma maison</h1>
+<h2>Mes favoris</h2>
+<div class="w-100 d-flex justify-content-around align-items-center flex-wrap" role="group">
+    <button type="button" class="btn mt-3"
+            (click)="run(f.id)"
+            [ngClass]="{ 'btn-success' : f.status === '1',  'btn-secondary': f.status !== '1'}"
+            *ngFor="let f of favorites"><em class="fa fa-fw {{getIcon(f.actions[0].subCategory)}}"></em> {{f.name}}
+    </button>
+</div>
+<h2>Ma sécurité</h2>
+<div class="w-100 d-flex justify-content-center align-items-center flex-wrap">
+    <div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="security">
+        <label class="btn-primary" ngbButtonLabel>
+            <input ngbButton type="radio" value="OFF"> Mode éteint
+        </label>
+        <label class="btn-primary" ngbButtonLabel>
+            <input ngbButton type="radio" value="PRESENCE"> Mode partiel
+        </label>
+        <label class="btn-primary" ngbButtonLabel>
+            <input ngbButton type="radio" value="ON"> Mode total
+        </label>
+    </div>
+</div>

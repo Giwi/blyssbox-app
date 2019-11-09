@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { BlyssboxService } from '../../services/blyssbox.service';
 import { DevicesService } from '../../services/devices.service';
@@ -10,10 +10,10 @@ import { UserService } from '../../services/user.service';
   templateUrl: './lightnings-page.component.html',
   styleUrls: ['./lightnings-page.component.scss']
 })
-export class LightningsPageComponent implements OnInit {
+export class LightningsPageComponent implements OnInit, OnDestroy {
   @ViewChild('refresher', { static: true }) refresher: RefreshTitleComponent;
   lightnings = [];
-  loading = false;
+  timer;
 
   constructor(
     private logger: NGXLogger,
@@ -25,7 +25,14 @@ export class LightningsPageComponent implements OnInit {
 
   ngOnInit() {
     this.logger.debug('LightningsPageComponent', 'ngOnInit');
-    this.userService.isLoggedIn().then(() => this.doRefresh());
+    this.userService.isLoggedIn().then(() => {
+      this.doRefresh();
+      this.timer = setInterval(this.doRefresh.bind(this), 2000);
+    });
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
   }
 
   run(serial: string, action: string) {
@@ -37,13 +44,15 @@ export class LightningsPageComponent implements OnInit {
       a = action === 'OFF' ? 'ON' : 'OFF';
     }
     this.blyssboxService.setDeviceStatus(serial, a)
-      .subscribe(() => this.doRefresh());
+      .subscribe(() => {
+      });
   }
 
   runToggle(serial: string) {
     this.logger.debug('LightningsPageComponent', 'runToggle', serial);
     this.blyssboxService.setDeviceStatus(serial, 'TOGGLE')
-      .subscribe(() => this.doRefresh());
+      .subscribe(() => {
+      });
   }
 
   getDevice(type: string) {
@@ -51,13 +60,11 @@ export class LightningsPageComponent implements OnInit {
   }
 
   doRefresh() {
-    this.loading = true;
     this.blyssboxService.getDevices('LIGHTING', '')
       .subscribe(f => {
         this.lightnings = f;
         this.logger.debug('LightningsPageComponent', 'doRefresh', this.lightnings);
         this.refresher.stop();
-        this.loading = false;
       });
   }
 

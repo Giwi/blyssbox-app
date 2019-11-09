@@ -1,38 +1,38 @@
-<div class="d-flex" id="wrapper">
+<body class="bg-dark" [ngClass]="{'sidebar-toggled' : hideMenu}">
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top" *ngIf="loggedIn">
+    <a class="navbar-brand mr-1" href="#">BlyssBox</a>
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="menu-toggle" (click)="hideMenu = !hideMenu">
+        <em class="fa fa-bars"></em></button>
+</nav>
+<div id="wrapper">
+    <ul class="sidebar navbar-nav" [ngClass]="{'toggled' : hideMenu}">
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/home" class="nav-link"><em
+                class="fa fa-fw fa-home"></em> <span>Ma maison</span></a></li>
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/favorites" class="nav-link"><em
+                class="fa fa-fw fa-star"></em> <span>Favoris</span></a></li>
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/openings" class="nav-link"><em
+                class="fa fa-fw fa-window-maximize"></em> <span>Ouvertures</span></a></li>
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/lightnings" class="nav-link"><em
+                class="fa fa-fw fa-lightbulb-o"></em> <span>Eclairages</span></a></li>
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/status" class="nav-link"><em
+                class="fa fa-fw fa-cogs"></em> <span>Status</span></a></li>
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/history" class="nav-link"><em
+                class="fa fa-fw fa-history"></em> <span>Historique</span></a></li>
+    </ul>
 
-    <!-- Sidebar -->
-    <div class="navbar-nav sidebar border-right" id="sidebar-wrapper" [ngClass]="{'toggled' : hideMenu}">
-        <div class="sidebar-heading bg-light">Blyssbox</div>
-        <div class="list-group list-group-flush" *ngIf="!loggedIn">
-            <a routerLink="/login" class="list-group-item list-group-item-action" routerLinkActive="active"><em
-                    class="fa fa-fw fa-sign-in"></em> Login</a>
-        </div>
-        <div class="list-group list-group-flush" *ngIf="loggedIn">
-            <a routerLink="/favorites" class="list-group-item list-group-item-action" routerLinkActive="active"><em
-                    class="fa fa-fw fa-star"></em> Favoris</a>
-            <a routerLink="/openings" class="list-group-item list-group-item-action" routerLinkActive="active"><em
-                    class="fa fa-fw fa-window-maximize"></em> Ouvertures</a>
-            <a routerLink="/lightnings" class="list-group-item list-group-item-action" routerLinkActive="active"><em
-                    class="fa fa-fw fa-lightbulb-o"></em> Eclairages</a>
-            <a routerLink="/history" class="list-group-item list-group-item-action" routerLinkActive="active"><em
-                    class="fa fa-fw fa-history"></em> Historique</a>
-            <a routerLink="/status" class="list-group-item list-group-item-action" routerLinkActive="active"><em
-                    class="fa fa-fw fa-cogs"></em> Status</a>
-        </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle" (click)="hideMenu = !hideMenu"><em class="fa fa-bars"></em></button>
-        </nav>
-
-        <div class="container-fluid">
+    <div id="content-wrapper">
+        <div class="container-fluid bg-dark">
             <router-outlet></router-outlet>
         </div>
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © GiwiSoft 2019</span>
+                </div>
+            </div>
+        </footer>
     </div>
-    <!-- /#page-content-wrapper -->
-
+    <!-- /.content-wrapper -->
 </div>
+<!-- /#wrapper -->
+</body>

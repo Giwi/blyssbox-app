@@ -1,12 +1,8 @@
-<div class="row min-w-100 align-items-center">
-    <div class="col-11">
-        <h1>
-            <ng-content></ng-content>
-        </h1>
-    </div>
-    <div class="col-1 text-right">
-        <button class="btn btn-outline-primary" (click)="onClick($event)">
+<ol class="breadcrumb text-white">
+    <li class="breadcrumb-item w-100">
+        <ng-content></ng-content>
+        <button class="btn btn-outline-secondary float-right" (click)="onClick($event)">
             <em class="fa fa-w fa-refresh" [ngClass]="{ 'fa-spin': loading }"></em>
         </button>
-    </div>
-</div>
+    </li>
+</ol>

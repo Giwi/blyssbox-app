@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BlyssboxService } from '../../services/blyssbox.service';
 import { NGXLogger } from 'ngx-logger';
 import { RefreshTitleComponent } from '../../components/refresh-title/refresh-title.component';
@@ -9,9 +9,10 @@ import { UserService } from '../../services/user.service';
   templateUrl: './favorites-page.component.html',
   styleUrls: ['./favorites-page.component.scss']
 })
-export class FavoritesPageComponent implements OnInit {
+export class FavoritesPageComponent implements OnInit, OnDestroy {
   @ViewChild('refresher', { static: true }) refresher: RefreshTitleComponent;
   favorites = [];
+  timer;
 
   constructor(
     private logger: NGXLogger,
@@ -22,11 +23,18 @@ export class FavoritesPageComponent implements OnInit {
 
   ngOnInit() {
     this.logger.debug('FavoritesPageComponent', 'ngOnInit');
-    this.userService.isLoggedIn().then(() => this.doRefresh());
+    this.userService.isLoggedIn().then(() => {
+      this.doRefresh();
+      this.timer = setInterval(this.doRefresh.bind(this), 2000);
+    });
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
   }
 
   run(serial: number) {
-    this.blyssboxService.setFavoriteStart(serial).subscribe(() => this.doRefresh());
+    this.blyssboxService.setFavoriteStart(serial).subscribe(() => {});
   }
 
   doRefresh() {

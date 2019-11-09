@@ -1,17 +1,11 @@
 :host {
-  .card-list {
-    .disabled {
-      background-color: #000000;
-    }
+  .picto {
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
 
-    .picto {
-      text-align: center;
-      margin: 0;
-      padding: 1rem;
-
-      em {
-        font-size: 2rem;
-      }
+    em {
+      font-size: 2rem;
     }
   }
 }

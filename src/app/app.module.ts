@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,9 +16,12 @@ import { OpeningsPageComponent } from './pages/openings-page/openings-page.compo
 import { StatusPageComponent } from './pages/status-page/status-page.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { StorageModule } from '@ngx-pwa/local-storage';
-import  { MessageBusModule } from 'ngx-message-bus';
+import { MessageBusModule } from 'ngx-message-bus';
 import { RefreshTitleComponent } from './components/refresh-title/refresh-title.component';
 import { BatteryLevelComponent } from './components/battery-level/battery-level.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NgxGaugeModule } from 'ngx-gauge';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { BatteryLevelComponent } from './components/battery-level/battery-level.
     OpeningsPageComponent,
     StatusPageComponent,
     RefreshTitleComponent,
-    BatteryLevelComponent
+    BatteryLevelComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,11 +46,13 @@ import { BatteryLevelComponent } from './components/battery-level/battery-level.
       preventDuplicates: true
     }),
     NgbModule,
-    LoggerModule.forRoot({serverLoggingUrl: '', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
-    StorageModule.forRoot({IDBNoWrap: true, IDBDBName: 'blyssbox', LSPrefix: 'blyssbox_'}),
+    NgxGaugeModule,
+    LoggerModule.forRoot({ serverLoggingUrl: '', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF }),
+    StorageModule.forRoot({ IDBNoWrap: true, IDBDBName: 'blyssbox', LSPrefix: 'blyssbox_' }),
     MessageBusModule
   ],
   providers: [HttpErrorHandler],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

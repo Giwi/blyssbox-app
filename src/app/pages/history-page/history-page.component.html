@@ -1,15 +1,15 @@
 <app-refresh-title (onRefresh)="doRefresh()" #refresher>
     <em class="fa fa-fw fa-history"></em> Historique
 </app-refresh-title>
-<div *ngFor="let item of history;let i = index" class="card w-100 m-1">
+<div *ngFor="let item of history;let i = index" class="card w-100 m-1 {{reasons[item.reason].color}}">
     <div class="card-body p-0">
-        <div class="row align-items-center card-list">
-            <div class="col-1 picto {{reasons[item.reason].color}} text-white"><em class="fa {{reasons[item.reason].icon}}"></em></div>
-            <div class="col-2">
-                <div class="card-subtitle">{{item.date}}</div>
+        <div class="row align-items-center card-list no-gutters">
+            <div class="col-1 picto text-white"><em class="fa {{reasons[item.reason].icon}}"></em></div>
+            <div class="col-2 p-1">
+                <div class="card-subtitle text-white">{{item.date}}</div>
             </div>
-            <div class="col-9">
-                <h5>{{getDetail(item.reason)}}</h5>
+            <div class="col-9 p-1 text-white">
+                <h5 >{{getDetail(item.reason)}}</h5>
                 <p class="card-text">{{getDesc(item)}}</p>
             </div>
         </div>
@@ -21,5 +21,5 @@
     </div>
 </div>
 <ngb-pagination *ngIf="totalPage" (pageChange)="changePage($event)" [maxSize]="5" [rotate]="true"
-                class="d-flex justify-content-center"
+                class="d-flex justify-content-end bg-dark text-white"
                 [collectionSize]="totalPage" [page]="currentPage"></ngb-pagination>

@@ -27,29 +27,29 @@ const app = express()
 
 app.get(/^\/(ui)\/.+$/, (req, res) => {
     cachios.get('https://www.liveez.castorama.fr' + req.originalUrl, {headers, ttl: 300})
-        .then(response => res.json(response.data))
+        .then(response => res.status(response.status).json(response.data))
         .catch(error => {
-            console.error(error);
-            res.json({status: error});
+            console.error(error.response.status, error.response.statusText);
+            res.status(error.response.status).json({status: error});
         });
 });
 app.post(/^\/(ui)\/.+$/, (req, res) => {
     cachios.post('https://www.liveez.castorama.fr' + req.originalUrl, req.body, {headers, ttl: 300})
-        .then(response => res.json(response.data))
+        .then(response => res.status(response.status).json(response.data))
         .catch(error => {
-            console.error(error);
-            res.json({status: error});
+            console.error(error.response.status, error.response.statusText);
+            res.status(error.response.status).json({status: error});
         });
 });
 app.put(/^\/(ui)\/.+$/, (req, res) => {
     cachios.put('https://www.liveez.castorama.fr' + req.originalUrl, req.body, {headers, ttl: 300})
-        .then(response => res.json(response.data))
+        .then(response => res.status(response.status).json(response.data))
         .catch(error => {
-            console.error(error);
-            res.json({status: error});
+            console.error(error.response.status, error.response.statusText);
+            res.status(error.response.status).json({status: error});
         });
 });
-app.listen(8001, () => {
+app.listen(process.env.PORT || 8080, () => {
     /* exec('/usr/bin/chromium-browser --full-screen --noerrdialogs --disable-infobars --kiosk http://localhost:8001', (err, stdout, stderr) => {
          if (err) {
              // node couldn't execute the command

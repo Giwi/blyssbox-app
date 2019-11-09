@@ -1,35 +1,30 @@
 <app-refresh-title (onRefresh)="doRefresh()" #refresher>
     <em class="fa fa-fw fa-window-maximize"></em> Ouvertures
 </app-refresh-title>
-<div class="d-flex justify-content-center" *ngIf="loading">
-    <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-</div>
-<div *ngFor="let item of openings;let i = index" class="card w-100 m-1" [ngClass]="{'disabled': !item.alive}">
-    <div class="card-body p-0">
-        <div class="row align-items-center card-list">
-            <div class="col-1 picto bg-primary text-white"><em class="fa {{getIcon(item.type)}}"></em></div>
-            <div class="col-8">
-                <h5 class="card-title">{{item.name}}  </h5>
-                <small>{{getDevice(item.type).name}}</small>
-            </div>
-            <div class="col-2 text-right">
-                <app-battery-level [level]="item.batteryLevel"></app-battery-level>
-            </div>
 
-            <div class="col-1 text-right">
-                <div class="custom-control custom-switch" *ngIf="item.status !== 'TOGGLE'">
-                    <input type="checkbox" class="custom-control-input" [id]="'toggle_' +i"
-                           (change)="run(item.serial, item.status)"
-                           [checked]="item.status === 'CLOSE' || item.status === 'ON'">
-                    <label class="custom-control-label" [for]="'toggle_' +i"> </label>
-
-                </div>
-                <button *ngIf="item.status === 'TOGGLE'"
-                        (click)="runToggle(item.serial)" class="btn btn-primary"><em class="fa fa-play"></em>
-                </button>
+<div class="card-columns">
+    <div class="card text-white o-hidden h-100 bg-dark" *ngFor="let item of openings"
+         [ngClass]="{'disabled': !item.alive}">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw {{getIcon(item.type)}}"></em>
             </div>
+            <div class="mr-5">{{item.name}}</div>
+            <small>{{getDevice(item.type).name}}</small>
+        </div>
+        <div class="card-footer text-white clearfix small z-1 click">
+            <app-battery-level class="float-left" [level]="item.batteryLevel"></app-battery-level>
+            <div class="custom-control custom-switch float-right" *ngIf="item.status !== 'TOGGLE'">
+                <input type="checkbox" class="custom-control-input" [id]="'toggle_' +i"
+                       (change)="run(item.serial, item.status)"
+                       [checked]="item.status === 'CLOSE' || item.status === 'ON'">
+                <label class="custom-control-label" [for]="'toggle_' +i"> </label>
+
+            </div>
+            <button *ngIf="item.status === 'TOGGLE'"
+                    (click)="runToggle(item.serial)" class="btn btn-sm btn-secondary float-right"><em
+                    class="fa fa-play"></em>
+            </button>
         </div>
     </div>
 </div>

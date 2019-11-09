@@ -1,1 +1,109 @@
-<p>status-page works!</p>
+<app-refresh-title (onRefresh)="doRefresh()" #refresher>
+    <em class="fa fa-fw fa-cogs"></em> Status
+</app-refresh-title>
+<div class="card-columns">
+    <div class="card text-white o-hidden h-100 bg-danger">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw fa-power-off"></em>
+            </div>
+            <div class="mr-5">Redémarrer la BlyssBox</div>
+        </div>
+        <div class="card-footer text-white clearfix small z-1 click" (click)="reboot()">
+            <span class="float-left">Reboot</span>
+        </div>
+    </div>
+    <div class="card text-white o-hidden h-100 bg-{{getColor(gateway.batt)}}">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw fa-flash"></em>
+            </div>
+            <div class="mr-5">Batterie</div>
+            <div class="flex justify-content-center">
+                <ngx-gauge [type]="'semi'"
+                           [value]="gateway.batt"
+                           [label]="'Niveau'"
+                           [thick]="20"
+                           [foregroundColor]="'#007bff'"
+                           [append]="'%'">
+                </ngx-gauge>
+            </div>
+        </div>
+        <div class="card-footer text-white clearfix small z-1">
+         <span>Alimentation :<em class="fa fa-fw fa-plug" *ngIf="gateway.power === 'SECTOR'"></em>
+            <em class="fa fa-fw fa-battery" *ngIf="gateway.power === 'BATT'"></em></span>
+        </div>
+    </div>
+
+    <div class="card text-white o-hidden h-100 bg-primary">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw fa-globe"></em>
+            </div>
+            <div class="mr-5">
+                Connexion :
+                <span *ngIf="gateway.connection === 'ETH'"><em class="fa fa-fw fa-globe"></em> Ethernet</span>
+                <span *ngIf="gateway.connection === 'WIFI'"><em
+                        class="fa fa-fw fa-wifi text-{{getColor(gateway.wifi)}}"></em> WIFI</span>
+                <span *ngIf="gateway.connection === 'GSM'"><em
+                        class="fa fa-fw fa-mobile text-{{getColor(gateway.gsm)}}"></em> GSM</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-white o-hidden h-100 bg-dark">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw fa-wrench"></em>
+            </div>
+            <div class="mr-5">
+                Informations techniques :
+                <div class="table-responsive">
+                    <table class="table table-borderless table-dark table-hover table-sm">
+                        <tbody>
+                        <tr *ngFor="let t of tech">
+                            <td>{{t.label}}</td>
+                            <td *ngIf="!t.date">{{gateway[t.field]}}</td>
+                            <td *ngIf="t.date">{{gateway[t.field] | date : 'mediumDate'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-white o-hidden h-100 bg-dark">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw fa-tags"></em>
+            </div>
+            <div class="mr-5">
+                Status des accessoires :
+                <div class="table-responsive">
+                    <table class="table table-borderless table-dark table-hover table-sm">
+                        <tbody>
+                        <tr *ngFor="let item of devices">
+                            <td><em class="fa fa-fw fa-tag" ></em>  {{item.name}}</td>
+                            <td><app-battery-level class="float-right" [level]="item.batteryLevel"></app-battery-level></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="card text-white o-hidden h-100" *ngFor="let f of favorites"
+         [ngClass]="{ 'bg-success' : f.status === '1',  'bg-primary': f.status !== '1'}">
+        <div class="card-body">
+            <div class="card-body-icon">
+                <em class="fa fa-fw {{getIcon(f.actions[0].subCategory)}}"></em>
+            </div>
+            <div class="mr-5">{{f.name}}</div>
+        </div>
+        <div class="card-footer text-white clearfix small z-1 click"
+             (click)="run(f.id)">
+            <span class="float-left">Run</span>
+        </div>
+    </div>-->
+</div>

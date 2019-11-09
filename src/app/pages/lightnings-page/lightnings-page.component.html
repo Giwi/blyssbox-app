@@ -1,12 +1,12 @@
 <app-refresh-title (onRefresh)="doRefresh()" #refresher>
     <em class="fa fa-fw fa-lightbulb-o"></em> Eclairages
 </app-refresh-title>
-<div class="card-columns">
+<div class="card-columns card-columns-3">
     <div class="card text-white o-hidden h-100 bg-dark" *ngFor="let item of lightnings; let i = index"
          [ngClass]="{'bg-secondary': !item.alive}">
         <div class="card-body">
-            <div class="card-body-icon">
-                <em class="fa fa-fw {{getIcon(item.type)}}"></em>
+            <div class="card-body-icon card-body-icon-type">
+                <img [src]="'/assets/icons/' + item.type + '.png'" [alt]="item.type">
             </div>
             <div class="mr-5">{{item.name}}</div>
             <small>{{getDevice(item.type).name}}</small>

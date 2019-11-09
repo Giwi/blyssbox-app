@@ -65,7 +65,7 @@ export class UserService {
           this.userData = value;
           resolve(this.userData);
         } else {
-          reject(false);
+          resolve(undefined);
         }
       }, err => reject(err));
     });

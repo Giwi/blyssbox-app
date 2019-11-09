@@ -11,14 +11,21 @@ body {
 
 #wrapper {
   display: flex;
+
+  #main {
+    width: 100%;
+    &>div {
+      min-height: calc(100vh - #{$sticky-footer-height});
+    }
+  }
+
   #content-wrapper {
     overflow-x: hidden;
     width: 100%;
     padding-top: 1rem;
     .container-fluid {
-      min-height: calc(100vh - #{$navbar-base-height} - #{$sticky-footer-height} - 1rem);
+      min-height: calc(100vh - #{$navbar-base-height} - #{$sticky-footer-height} - 0.75rem);
     }
-   // padding-bottom: $sticky-footer-height;
   }
 }
 
@@ -34,13 +41,16 @@ body {
   color: $white;
   background: fade-out($gray-800, .5);
   line-height: 46px;
+
   &:focus,
   &:hover {
     color: white;
   }
+
   &:hover {
     background: $gray-800;
   }
+
   i {
     font-weight: 800;
   }

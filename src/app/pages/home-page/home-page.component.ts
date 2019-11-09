@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { BlyssboxService } from '../../services/blyssbox.service';
 import { UserService } from '../../services/user.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -10,13 +11,15 @@ import { UserService } from '../../services/user.service';
 })
 export class HomePageComponent implements OnInit {
 
+  public checkboxGroupForm: FormGroup;
   favorites = [];
-  security: string;
+  security:string;
 
   constructor(
     private logger: NGXLogger,
     private blyssboxService: BlyssboxService,
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) {
   }
 
@@ -35,7 +38,7 @@ export class HomePageComponent implements OnInit {
       this.favorites = f;
       this.logger.debug('HomePageComponent', 'doRefresh', 'getFavorites', this.favorites);
     });
-    this.blyssboxService.getGatewayModes('INTRUSION').subscribe(f => {
+    this.blyssboxService.getGatewayCategoryMode('INTRUSION').subscribe(f => {
       this.security = f.mode;
       this.logger.debug('HomePageComponent', 'doRefresh', 'getGatewayModes', this.security);
     });

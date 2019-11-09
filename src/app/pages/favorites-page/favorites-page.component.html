@@ -1,7 +1,7 @@
 <app-refresh-title (onRefresh)="doRefresh()" #refresher>
     <em class="fa fa-fw fa-star"></em> Favoris
 </app-refresh-title>
-<div class="card-columns">
+<div class="card-columns card-columns-3">
     <div class="card text-white o-hidden h-100" *ngFor="let f of favorites"
          [ngClass]="{ 'bg-success' : f.status === '1',  'bg-primary': f.status !== '1'}">
         <div class="card-body">

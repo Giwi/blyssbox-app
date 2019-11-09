@@ -84,8 +84,11 @@
                     <table class="table table-borderless table-dark table-hover table-sm">
                         <tbody>
                         <tr *ngFor="let item of devices">
-                            <td><em class="fa fa-fw fa-tag" ></em>  {{item.name}}</td>
-                            <td><app-battery-level class="float-right" [level]="item.batteryLevel"></app-battery-level></td>
+                            <td><img [src]="'/assets/icons/' + item.type + '.png'" [alt]="item.type"
+                                     class="icon">  {{item.name}}</td>
+                            <td>
+                                <app-battery-level class="float-right" [level]="item.batteryLevel"></app-battery-level>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -93,17 +96,4 @@
             </div>
         </div>
     </div>
-    <!--<div class="card text-white o-hidden h-100" *ngFor="let f of favorites"
-         [ngClass]="{ 'bg-success' : f.status === '1',  'bg-primary': f.status !== '1'}">
-        <div class="card-body">
-            <div class="card-body-icon">
-                <em class="fa fa-fw {{getIcon(f.actions[0].subCategory)}}"></em>
-            </div>
-            <div class="mr-5">{{f.name}}</div>
-        </div>
-        <div class="card-footer text-white clearfix small z-1 click"
-             (click)="run(f.id)">
-            <span class="float-left">Run</span>
-        </div>
-    </div>-->
 </div>

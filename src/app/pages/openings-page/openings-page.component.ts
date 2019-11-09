@@ -28,7 +28,7 @@ export class OpeningsPageComponent implements OnInit, OnDestroy {
     this.logger.debug('OpeningsPageComponent', 'ngOnInit');
     this.userService.isLoggedIn().then(() => {
       this.doRefresh();
-      this.timer = setInterval(this.doRefresh.bind(this), 2000);
+    //  this.timer = setInterval(this.doRefresh.bind(this), 2000);
     });
   }
 

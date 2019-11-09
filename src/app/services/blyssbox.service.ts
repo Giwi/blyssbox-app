@@ -97,7 +97,7 @@ export class BlyssboxService {
   }
 
   getHistory(startDate, max, endDate, page) {
-    return this.http.post(this.uri + '2/history;jsessionid=' + this.userService.getSession(), {
+    return this.http.post(`${this.uri}2/history;jsessionid=${this.userService.getSession()}`, {
       startDate,
       max,
       endDate,
@@ -108,14 +108,20 @@ export class BlyssboxService {
   }
 
   getGatewayConnection()  {
-    return this.http.get(this.uri + '2/gateway/connection;jsessionid=' + this.userService.getSession(), this.httpOptions)
+    return this.http.get(`${this.uri}2/gateway/connection;jsessionid=${this.userService.getSession()}`, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getGatewayConnection')))
       .pipe(map(response => response));
   }
 
   setGatewayReboot() {
-    return this.http.put(this.uri + '2/gateway/reboot;jsessionid=' + this.userService.getSession(), {}, this.httpOptions)
+    return this.http.put(`${this.uri}2/gateway/reboot;jsessionid=${this.userService.getSession()}`, {}, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getGatewayConnection')))
+      .pipe(map(response => response));
+  }
+
+  getGatewayCategoryMode(category: string) {
+    return this.http.get(`${this.uri}2/gateway/mode/${category};jsessionid=${this.userService.getSession()}`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getGatewayCategoryMode')))
       .pipe(map(response => response));
   }
 }

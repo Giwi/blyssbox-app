@@ -6,7 +6,6 @@ import { OpeningsPageComponent } from './pages/openings-page/openings-page.compo
 import { StatusPageComponent } from './pages/status-page/status-page.component';
 import { LightningsPageComponent } from './pages/lightnings-page/lightnings-page.component';
 import { HistoryPageComponent } from './pages/history-page/history-page.component';
-import { environment } from '../environments/environment';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 
 

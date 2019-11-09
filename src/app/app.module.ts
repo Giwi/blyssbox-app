@@ -21,6 +21,7 @@ import { RefreshTitleComponent } from './components/refresh-title/refresh-title.
 import { BatteryLevelComponent } from './components/battery-level/battery-level.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NgxGaugeModule } from 'ngx-gauge';
+import { SecurityPageComponent } from './pages/security-page/security-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
     RefreshTitleComponent,
     BatteryLevelComponent,
     HomePageComponent,
+    SecurityPageComponent,
   ],
   imports: [
     BrowserModule,

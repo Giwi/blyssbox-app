@@ -7,6 +7,7 @@ import { StatusPageComponent } from './pages/status-page/status-page.component';
 import { LightningsPageComponent } from './pages/lightnings-page/lightnings-page.component';
 import { HistoryPageComponent } from './pages/history-page/history-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { SecurityPageComponent } from './pages/security-page/security-page.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'status', component: StatusPageComponent },
   { path: 'lightnings', component: LightningsPageComponent },
   { path: 'history', component: HistoryPageComponent },
-  { path: 'home', component: HomePageComponent }
+  { path: 'home', component: HomePageComponent },
+  { path: 'security', component: SecurityPageComponent }
 ];
 
 @NgModule({

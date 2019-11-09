@@ -1,17 +1,19 @@
 <body class="bg-dark" [ngClass]="{'sidebar-toggled' : hideMenu}">
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top" *ngIf="loggedIn">
-    <a class="navbar-brand mr-1" href="#"><img src="/assets/menu_bottom@2x.png" alt=""></a>
+    <a class="navbar-brand mr-1" routerLink="/home" ><img src="/assets/menu_bottom@2x.png" alt=""></a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="menu-toggle" (click)="hideMenu = !hideMenu">
         <em class="fa fa-bars"></em></button>
 </nav>
 <div id="wrapper">
     <ul class="sidebar navbar-nav" [ngClass]="{'toggled' : hideMenu}" *ngIf="loggedIn">
-        <li class="nav-item" routerLinkActive="active"><a routerLink="/home" class="nav-link"><em
-                class="fa fa-fw fa-home"></em> <span>Ma maison</span></a></li>
+        <!--<li class="nav-item" routerLinkActive="active"><a routerLink="/home" class="nav-link"><em
+                class="fa fa-fw fa-home"></em> <span>Ma maison</span></a></li>-->
         <li class="nav-item" routerLinkActive="active"><a routerLink="/favorites" class="nav-link"><em
                 class="fa fa-fw fa-star"></em> <span>Favoris</span></a></li>
+        <li class="nav-item" routerLinkActive="active"><a routerLink="/security" class="nav-link"><em
+                class="fa fa-fw fa-eye"></em> <span>Sécurité</span></a></li>
         <li class="nav-item" routerLinkActive="active"><a routerLink="/openings" class="nav-link"><em
-                class="fa fa-fw fa-window-maximize"></em> <span>Ouvertures</span></a></li>
+                class="fa fa-fw fa-window-maximize"></em> <span>Ouvrants</span></a></li>
         <li class="nav-item" routerLinkActive="active"><a routerLink="/lightnings" class="nav-link"><em
                 class="fa fa-fw fa-lightbulb-o"></em> <span>Eclairages</span></a></li>
         <li class="nav-item" routerLinkActive="active"><a routerLink="/status" class="nav-link"><em
